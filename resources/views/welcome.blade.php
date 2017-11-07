@@ -8,30 +8,24 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Avenir:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                font-family: 'Avenir', sans-serif;
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
             .flex-center {
+                height: 100vh;
                 align-items: center;
                 display: flex;
                 justify-content: center;
-            }
-
-            .position-ref {
                 position: relative;
             }
 
@@ -46,7 +40,17 @@
             }
 
             .title {
-                font-size: 84px;
+                font-weight: normal;
+                font-size: 64px;
+                margin-bottom: 80px;
+            }
+
+            .title small {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                font-size: 16px;
+                color: #999;
             }
 
             .links > a {
@@ -57,15 +61,22 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                margin-top: 2em;
+                margin-bottom: 2em;
             }
 
-            .m-b-md {
-                margin-bottom: 30px;
+            hr {
+                width: 70%;
+                margin: 2em auto;
+                margin-bottom: 2em;
+                color: transparent;
+                background-color: transparent;
+                border: 0; border-top: 1px solid #eee;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -78,16 +89,39 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <h1 class="title">
+                    Hello!
+                    <small>
+                        Nov. 6th, 2017
+                    </small>
+                </h1>
 
+                <p style="margin: 0 auto; max-width: 800px;">
+                    I'm Austen Cameron -- a web developer and outdoor enthusiast. 
+                    I've built a lot of websites over the years. This has given me the 
+                    opportunity to explore many different CMS platforms and frameworks, 
+                    but like many other developers, I've spent more hours 
+                    rebuilding my site than actually writing content for it. 
+                </p>
+                <hr>
+                <p style="margin: 0 auto; max-width: 800px; margin-top: 1em;">
+                    <strong>This time I'm taking a different approach.</strong>
+                    <br><br>
+                    In the past, I've built my site on things like 
+                    <a href="https://octobercms.com/">October CMS</a>, 
+                    <a href="https://wordpress.org/">Wordpress</a>, 
+                    <a href="https://getgrav.org/">Grav CMS</a>, and 
+                    <a href="https://statamic.com/">Statamic</a> (briefly). 
+                    While these are all great platforms, none of them ever felt 
+                    "perfect". This time, I'm starting with a new Laravel (5.5) 
+                    install and doing everything from scratch and open-source. 
+                    I'll be documenting every part of the build process as I take the site 
+                    from a scratch Laravel install to a dynamic markdown-content-supporting beast. 
+                    Hopefully we can all learn something together and enjoy the ride!
+                </p>
+                <hr>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="http://archive.406.io">Old Site Archives</a>
                 </div>
             </div>
         </div>
