@@ -48,6 +48,10 @@
                 margin-bottom: 0.5rem;
             }
 
+            h4 {
+                margin-bottom: 0.5rem;
+            }
+
             .title small, .date {
                 display: block;
                 margin: 0 auto;
@@ -71,10 +75,20 @@
                 text-transform: uppercase;
             }
 
-            code {
+            ul > li {
+                margin-bottom: 2rem;
+                list-style: none;
+            }
+
+            code, pre {
                 background-color: #eee;
                 padding: 0.15rem;
                 border-radius: 4px;
+            }
+            pre {
+                white-space: pre-line;
+                margin-top: 0.25em;
+                padding: 0.75em;
             }
 
             hr {
@@ -149,6 +163,52 @@
                         and <a href="https://twitter.com/adamwathan">@adamwathan</a>. 
                         Admittedly, I'm super stoked to get the chance to use Tailwind, 
                         it's a project with a lot of promise, and it looks awesome so far!
+                    </p>
+
+                    <p>
+                        <h4>Installing Tailwind and Getting Down to Business</h4>
+                        Installing Tailwind in a Laravel project is pretty 
+                        straightforward, here's what I did:                 
+                        <br>
+                        <ul style="text-align: left">
+                            <li>
+                                Install it as an npm dependency, and run its utility to create
+                                a <strong>tailwind.js</strong> config file in your project's root
+                                <br>
+                                <pre>
+                                    $ npm i tailwindcss
+                                    $ ./node_modules/.bin/tailwind init
+                                </pre>
+                                
+                            </li>
+                            <li>
+                                Added tailwind to the <strong>webpack.mix.js</strong> file, which now looks like this:
+                                <br>
+                                <pre>
+                                    <code>
+                                        let mix = require('laravel-mix');
+                                        let tailwindcss = require('tailwindcss');
+                                        
+                                        mix.js('resources/assets/js/app.js', 'public/js')
+                                           .sass('resources/assets/sass/app.scss', 'public/css')
+                                           .options({
+                                                processCssUrls: false,
+                                                postCss: [ tailwindcss('./tailwind.js') ],
+                                            });
+                                    </code>
+                                </pre>
+                            </li>
+                            <li>
+                                Replaced the contents of <strong>resources/assets/sass/app.scss with</strong>
+                                <br>
+                                <pre>
+                                    @tailwind preflight;
+                                    @tailwind utilities;
+                                </pre>
+                            </li>
+                        </ul>
+                        Once I did those few steps, I ran <code>npm run dev</code> and 
+                        I see tailwind classes in my generated app.css file, great!
                     </p>
                 </div>
                 
