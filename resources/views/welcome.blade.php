@@ -208,7 +208,8 @@
                             </li>
                         </ul>
                         Once I did those few steps, I ran <code>npm run dev</code> and 
-                        I see tailwind classes in my generated app.css file, great!
+                        I see tailwind classes in the <br> 
+                        generated <strong>public/css/app.css</strong> file, great!
                     </p>
                 </div>
                 
