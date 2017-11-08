@@ -5,26 +5,25 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Web Dev | 406.io</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Avenir:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
+            @import("https://fonts.googleapis.com/css?family=Avenir:100,600");
             html, body {
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Avenir', sans-serif;
                 font-weight: 100;
-                height: 100vh;
                 margin: 0;
+                padding: 1em;
             }
 
             .flex-center {
-                height: 100vh;
                 align-items: center;
                 display: flex;
+                margin-top: 0;
                 justify-content: center;
                 position: relative;
             }
@@ -42,15 +41,24 @@
             .title {
                 font-weight: normal;
                 font-size: 64px;
-                margin-bottom: 80px;
+                margin-bottom: 40px;
+            }
+            h3 {
+                margin-top: 3rem;
+                margin-bottom: 0.5rem;
             }
 
-            .title small {
+            .title small, .date {
                 display: block;
                 margin: 0 auto;
                 text-align: center;
-                font-size: 16px;
+                font-size: 14px;
+                margin-bottom: 1rem;
                 color: #999;
+            }
+
+            .links  {
+                margin: 2rem auto;
             }
 
             .links > a {
@@ -61,8 +69,12 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
-                margin-top: 2em;
-                margin-bottom: 2em;
+            }
+
+            code {
+                background-color: #eee;
+                padding: 0.15rem;
+                border-radius: 4px;
             }
 
             hr {
@@ -97,14 +109,13 @@
                 </h1>
 
                 <p style="margin: 0 auto; max-width: 800px;">
-                    I'm Austen Cameron -- a web developer and outdoor enthusiast. 
-                    I've built a lot of websites over the years. This has given me the 
-                    opportunity to explore many different CMS platforms and frameworks, 
-                    but like many other developers, I've spent more hours 
-                    rebuilding my site than actually writing content for it. 
+                    My name is Austen Cameron, I'm a professional web developer and technology enthusiast.
+                    In the past 15+ years of being a developer, I've gotten the 
+                    opportunity to explore many different frameworks, CMS platforms and packages. 
+                    Like many other developers, I've spent more hours rebuilding 
+                    my site over the years than actually writing content for it. 
                 </p>
-                <hr>
-                <p style="margin: 0 auto; max-width: 800px; margin-top: 1em;">
+                <p style="margin: 0 auto; max-width: 800px; margin-top: 2em;">
                     <strong>This time I'm taking a different approach.</strong>
                     <br><br>
                     In the past, I've built my site on things like 
@@ -113,15 +124,37 @@
                     <a href="https://getgrav.org/">Grav CMS</a>, and 
                     <a href="https://statamic.com/">Statamic</a> (briefly). 
                     While these are all great platforms, none of them ever felt 
-                    "perfect". This time, I'm starting with a new Laravel (5.5) 
-                    install and doing everything from scratch and open-source. 
-                    I'll be documenting every part of the build process as I take the site 
-                    from a scratch Laravel install to a dynamic markdown-content-supporting beast. 
+                    "perfect". This time I'm starting with a new Laravel (5.5) 
+                    install and building a new site from scratch. I'll be documenting 
+                    every part of the build process as I take the site from a brand new 
+                    framework install to a dynamic markdown-content-supporting beast. 
+                    The whole project will be open source and available on github. 
                     Hopefully we can all learn something together and enjoy the ride!
                 </p>
                 <hr>
+                <h3>First Steps and Making Things Look Better</h3>
+                <small class="date">Nov. 7th, 2017</small>
+                <div style="margin: 0 auto; max-width: 800px;">
+                    <p>
+                        Although I started and launched the site yesterday, there isn't much to it yet.
+                        All I really did was run <br><code>composer create-project laravel/laravel</code>, 
+                        edited some content and set up auto deploy with <a href="https://forge.laravel.com">Forge</a>.
+                        For now, static content and pages are just fine, so my first order of business
+                        will be to spruce up how the site looks.
+                    </p>
+                
+                    <p>
+                        To accomplish this, I'll be using <a href="https://tailwindcss.com/">Tailwind CSS</a>, 
+                        an exciting new project from <a href="https://twitter.com/reinink">@reinink</a>, <a href="https://twitter.com/davidhemphill">@davidhemphill</a>, <a href="https://twitter.com/steveschoger">@steveschoger</a> 
+                        and <a href="https://twitter.com/adamwathan">@adamwathan</a>. 
+                        Admittedly, I'm super stoked to get the chance to use Tailwind, 
+                        it's a project with a lot of promise, and it looks awesome so far!
+                    </p>
+                </div>
+                
+                <hr>
                 <div class="links">
-                    <a href="http://archive.406.io">Old Site Archives</a>
+                    <a href="http://archive.406.io">Temporary Link to Old Site</a>
                 </div>
             </div>
         </div>
