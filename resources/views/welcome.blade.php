@@ -5,8 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <title>Web Dev | 406.io</title>
 
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -144,6 +149,15 @@
                     framework install to a dynamic markdown-content-supporting beast. 
                     The whole project will be open source and available on github. 
                     Hopefully we can all learn something together and enjoy the ride!
+                    <br>
+                    <h4>The Initial (Rough) Roadmap</h4>
+                    <ol class="text-left pl-4">
+                        <li>Add some initial design using <a href="https://tailwindcss.com">Tailwind CSS</a></li>
+                        <li>Database-driven page structure</li>
+                        <li>Markdown content support / display</li>
+                        <li>Syntax Highlighting</li>
+                        <li>Other exciting iterations!</li>
+                    </ol>
                 </p>
                 <hr>
                 <h3>First Steps and Making Things Look Better</h3>
@@ -219,5 +233,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
