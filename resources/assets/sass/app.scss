@@ -44,3 +44,18 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
+// Bring in the font
+@import url("https://fonts.googleapis.com/css?family=Avenir:100,200,300,400,600");
+
+body {
+    font-family: 'Avenir', sans-serif;
+}
+
+code, pre {
+    @apply .bg-grey-lighter .rounded .p-1 .text-sm;
+}
+
+.list li {
+    @apply .mb-6;
+}
