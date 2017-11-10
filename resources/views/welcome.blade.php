@@ -35,12 +35,13 @@
                     <a href="https://getgrav.org/">Grav CMS</a>, and 
                     <a href="https://statamic.com/">Statamic</a> (briefly). 
                     While these are all great platforms, none of them ever felt 
-                    "perfect". This time I'm starting with a new Laravel (5.5) 
-                    install and building a new site from scratch. I'll be documenting 
-                    every part of the build process as I take the site from a brand new 
-                    framework install to a dynamic markdown-content-supporting beast. 
-                    The whole project will be open source and available on github. 
-                    Hopefully we can all learn something together and enjoy the ride!
+                    "just right". This time I'm starting with a new Laravel (5.5) 
+                    install and building a site and management dashboard from scratch. 
+                    I'll be documenting every part of the build process as I take 
+                    the site from a brand new framework install to a dynamic 
+                    markdown-content-supporting beast. The whole project will be 
+                    open source and available on github. Hopefully we can all learn 
+                    something together, enjoy the ride!
                 </p>
                 <p>
                     <h4 class="mt-4 mb-2">The Initial (Rough) Roadmap</h4>
@@ -67,17 +68,21 @@
                     To accomplish this, I'll be using <a href="https://tailwindcss.com/">Tailwind CSS</a>, 
                     an exciting new project from <a href="https://twitter.com/adamwathan">@adamwathan</a>, <a href="https://twitter.com/steveschoger">@steveschoger</a>, <a href="https://twitter.com/reinink">@reinink</a> 
                     and <a href="https://twitter.com/davidhemphill">@davidhemphill</a>. 
-                    Admittedly, I'm super stoked to get the chance to use Tailwind, 
-                    it's a project with a lot of promise, and it looks awesome so far!
+                    I've been looking for a good excuse to try out Tailwind, and the "from scratch"
+                    nature of the framework fits right in with my vision for this project. 
+                    After using it to create some simple styles, I must say working with Tailwind 
+                    seems like a serious breath of fresh air, and that feels great!
                 </p>
 
                 <p>
-                    <h4 class="mt-4 mb-2">Installing Tailwind and Getting Down to Business</h4>
-                    Installing Tailwind in a Laravel project is pretty 
-                    straightforward, here's what I did:                 
+                    <h4 class="mt-4 mb-2">
+                        Installing Tailwind in a Laravel project is pretty 
+                        straightforward, here's what I did:
+                    </h4>
+                                   
                     <ul class="list text-left">
                         <li>
-                            Install it as an npm dependency, and run its utility to create
+                            Add the project as an npm dependency and run its utility to create
                             a <strong>tailwind.js</strong> config file in your project's root
                             <br>
 <pre>
@@ -109,9 +114,35 @@
                         </li>
                     </ul>
                     Finally, run <code>npm run dev</code> and you should see 
-                    the tailwind classes in the generated <strong>public/css/app.css</strong> file!
+                    the tailwind classes in the generated <strong>public/css/app.css</strong> file! 
+                    From here, you can start creating your design. Chances are you'll find the <a href="https://tailwindcss.com/docs/adding-new-utilities/">adding new utilities</a> and <a href="https://tailwindcss.com/docs/extracting-components">extracting components</a> pages really helpful. Have fun!
                 </p>
                 
+                <hr class="my-8 mx-auto border-t-1 w-3/4">
+                <h3>Roughing Out a Plan</h3>
+                <small class="mb-4 mt-2 block text-grey text-xs font-normal uppercase">Nov. 9th, 2017</small>
+                <p>
+                    Thus far we've installed Laravel and Tailwind CSS, so we've got an 
+                    excellent starting point for the "application" part of the site. 
+                    However, the static one-page nature of the site's content is 
+                    starting to become a burden, so it's time to plan out a rudimentary 
+                    content management system!
+                </p>
+                <strong class="block my-2 underline text-lg">The Outline</strong>
+                <ul class="text-center list-reset pl-4 mx-auto mb-6 w-full sm:w-3/4">
+                    <li class="pl-2 mb-2">Scaffold Laravel Authentication</li>
+                    <li class="pl-2 mb-2">Design a log in page and barebones dashboard page</li>
+                    <li class="pl-2 mb-2">MVC files and CRUD for Page management</li>
+                    <li class="pl-2 mb-2">Display of single pages at direct URL (basic page router)</li>
+                    <li class="pl-2 mb-2">A blog-like display of all pages with prev/next buttons</li>
+                    <li class="pl-2 mb-2">Add support for markdown in content</li>
+                </ul>
+                <p>
+                    Although I'm sure it will change, I think that's a pretty good outline 
+                    for now. With that plan in mind, we'll get started on the code in the 
+                    next article.
+                </p>
+
                 <hr class="my-8 mx-auto border-t-1 w-1/2">                
                 <a href="http://archive.406.io" class="block uppercase no-underline text-sm my-8 font-semibold">
                     Temporary Link to Old Site
