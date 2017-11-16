@@ -4,7 +4,7 @@
     <div class="flex flex-wrap justify-center pt-8">
         <div class="w-full md:w-1/2">
             <h3 class="text-center text-grey-dark mb-6 uppercase">Login</h3>
-            <form method="POST" action="{{ route('login') }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form method="POST" action="{{ route('login') }}" class="card">
                 {{ csrf_field() }}
                 <div class="mb-4">
                     <label for="email" class="block text-grey-darker text-sm font-bold mb-2">E-Mail Address</label>
@@ -33,7 +33,7 @@
                     </label>
                 </div>
                 <div class="flex items-center justify-between">
-                    <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">
+                    <button class="btn bg-blue hover:bg-blue-darker" type="submit">
                         Sign In
                     </button>
                     <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker no-underline hover:underline" href="{{ route('password.request') }}">

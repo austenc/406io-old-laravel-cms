@@ -3,7 +3,7 @@
 @section('content')
 	<div class="flex mb-6 border-b pb-3">
 		<h2 class="flex-1">Pages</h2>
-		<a class="flex-none bg-blue px-4 py-2 rounded text-white hover:bg-blue-dark no-underline" href="{{ route('pages.create') }}">Create New Page</a>
+		<a class="flex-none btn bg-blue hover:bg-blue-darker" href="{{ route('pages.create') }}">Create New Page</a>
 	</div>
 	<table class="table">
 		<thead>

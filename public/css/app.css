@@ -483,21 +483,7 @@ button,
 [role=button] {
   cursor: pointer;
 }
-/**
- * Here you would add any of your custom component classes; stuff that you'd
- * want loaded *before* the utilities so that the utilities could still
- * override them.
- *
- * Example:
- *
- * .btn { ... }
- * .form-input { ... }
- *
- * Or if using a preprocessor:
- *
- * @import "components/buttons";
- * @import "components/forms";
- */
+
 .input {
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
@@ -513,6 +499,29 @@ button,
   padding-right: 0.5rem;
   color: #596a73;
   margin-bottom: 0.75rem;
+}
+
+.card {
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border-radius: .25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  color: #ffffff;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: .25rem;
+  text-decoration: none;
 }
 
 /**
@@ -3575,20 +3584,7 @@ button,
 .cursor-not-allowed {
   cursor: not-allowed;
 }
-/**
- * Here you would add any custom utilities you need that don't come out of the
- * box with Tailwind.
- *
- * Example :
- *
- * .bg-pattern-graph-paper { ... }
- * .skew-45 { ... }
- *
- * Or if using a preprocessor..
- *
- * @import "utilities/background-patterns";
- * @import "utilities/skew-transforms";
- */
+
 body {
   font-family: 'Avenir', sans-serif;
   background-color: #f3f7f9;
