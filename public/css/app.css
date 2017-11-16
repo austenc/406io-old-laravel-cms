@@ -3576,6 +3576,24 @@ body {
   font-family: 'Avenir', sans-serif;
 }
 
+.nav-item {
+  display: block;
+  margin-top: 1rem;
+  color: #a0f0ed;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+@media (min-width: 992px) {
+  .nav-item {
+    display: inline-block;
+    margin-top: 0;
+  }
+}
+
 code,
 pre {
   background-color: #f3f7f9;

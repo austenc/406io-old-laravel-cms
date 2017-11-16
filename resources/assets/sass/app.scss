@@ -52,6 +52,20 @@ body {
     font-family: 'Avenir', sans-serif;
 }
 
+.nav-item {
+	@apply .block .mt-4 .text-teal-lighter .no-underline;
+
+	&:hover {
+		@apply .text-white;
+	}
+}
+
+@screen lg {
+	.nav-item {
+		@apply .inline-block .mt-0;
+	}
+}
+
 code, pre {
     @apply .bg-grey-lighter .rounded .p-1 .text-sm;
 }
