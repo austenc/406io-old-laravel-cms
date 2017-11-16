@@ -131,8 +131,8 @@
                 <strong class="block my-2 underline text-lg">The Outline</strong>
                 <ul class="text-center list-reset pl-4 mx-auto mb-6 w-full sm:w-3/4">
                     <li class="pl-2 mb-2">Scaffold Laravel Authentication</li>
-                    <li class="pl-2 mb-2">Design a log in page and barebones dashboard page</li>
-                    <li class="pl-2 mb-2">MVC files and CRUD for Page management</li>
+                    <li class="pl-2 mb-2">Page management CRUD (create-read-update-delete)</li>
+                    <li class="pl-2 mb-2">Initial rough design and barebones dashboard page</li>
                     <li class="pl-2 mb-2">Display of single pages at direct URL (basic page router)</li>
                     <li class="pl-2 mb-2">A blog-like display of all pages with prev/next buttons</li>
                     <li class="pl-2 mb-2">Add support for markdown in content</li>
