@@ -7,7 +7,7 @@
             <form method="POST" action="{{ route('login') }}" class="card">
                 {{ csrf_field() }}
                 <div class="mb-4">
-                    <label for="email" class="block text-grey-darker text-sm font-bold mb-2">E-Mail Address</label>
+                    <label for="email" class="label">E-Mail Address</label>
                     <input id="email" type="email" name="email" class="input {{ $errors->has('email') ? ' border-red' : '' }}" value="{{ old('email') }}" required autofocus>
 
                     @if ($errors->has('email'))
@@ -17,7 +17,7 @@
                     @endif
                 </div>
                 <div class="mb-6">
-                    <label for="password" class="block text-grey-darker text-sm font-bold mb-2">Password</label>
+                    <label for="password" class="label">Password</label>
                     <input id="password" type="password" name="password" class="input {{ $errors->has('password') ? ' border-red' : '' }}" value="{{ old('password') }}" required autofocus>
 
                     @if ($errors->has('password'))

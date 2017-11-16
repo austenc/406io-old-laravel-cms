@@ -501,6 +501,14 @@ button,
   margin-bottom: 0.75rem;
 }
 
+.label {
+  display: block;
+  color: #596a73;
+  font-size: .875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
 .card {
   background-color: #ffffff;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
