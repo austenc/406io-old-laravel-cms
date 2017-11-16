@@ -498,6 +498,23 @@ button,
  * @import "components/buttons";
  * @import "components/forms";
  */
+.input {
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid #dae4e9;
+  border-radius: .25rem;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: #596a73;
+  margin-bottom: 0.75rem;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -3574,6 +3591,7 @@ button,
  */
 body {
   font-family: 'Avenir', sans-serif;
+  background-color: #f3f7f9;
 }
 
 code,

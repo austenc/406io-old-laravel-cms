@@ -23,6 +23,10 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+// Forms
+.input {
+	@apply .shadow .appearance-none .border .rounded .w-full .py-2 .px-2 .text-grey-darker .mb-3;
+}
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -50,6 +54,7 @@
 
 body {
     font-family: 'Avenir', sans-serif;
+    @apply .bg-grey-lighter
 }
 code, pre {
     @apply .bg-grey-lighter .rounded .p-1 .text-sm;

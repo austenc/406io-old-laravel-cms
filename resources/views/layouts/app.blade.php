@@ -21,7 +21,9 @@
             </div>
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <div class="lg:flex-grow">
-                    <a href="{{ route('pages.index') }}" class="nav-item">Manage Pages</a>
+                    @auth
+                        <a href="{{ route('pages.index') }}" class="nav-item">Manage Pages</a>
+                    @endauth
                 </div>
                 <div>
                     @guest
