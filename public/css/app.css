@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Avenir:100,200,300,400,600);/**
+@import url(https://fonts.googleapis.com/css?family=Avenir:200,300,400,600,700);/**
  * This injects Tailwind's base styles, which is a combination of
  * Normalize.css and some additional base styles.
  *
@@ -3576,6 +3576,18 @@ body {
   font-family: 'Avenir', sans-serif;
 }
 
+code,
+pre {
+  background-color: #f3f7f9;
+  border-radius: .25rem;
+  padding: 0.25rem;
+  font-size: .875rem;
+}
+
+.list li {
+  margin-bottom: 1.5rem;
+}
+
 .nav-item {
   display: block;
   margin-top: 1rem;
@@ -3594,16 +3606,48 @@ body {
   }
 }
 
-code,
-pre {
-  background-color: #f3f7f9;
-  border-radius: .25rem;
-  padding: 0.25rem;
+.table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.table thead > tr > th {
+  font-weight: 700;
+  padding: 0.5rem;
+  padding-top: 0.75rem;
+  color: #70818a;
+  background-color: #dae4e9;
+  text-transform: uppercase;
   font-size: .875rem;
 }
 
-.list li {
-  margin-bottom: 1.5rem;
+.table tbody > tr > td {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-bottom: 1px solid #dae4e9;
+}
+
+.table tbody > tr:hover > td {
+  background-color: #f3f7f9;
+}
+
+.table tbody > tr:hover > td a {
+  visibility: visible;
+}
+
+.table tr > td:last-child a {
+  visibility: hidden;
+  text-decoration: none;
+  color: #3490dc;
+  font-size: .875rem;
+}
+
+.table tr > td:last-child a:hover {
+  color: #103d60;
+  text-decoration: underline;
 }
 
 @media (min-width: 576px) {

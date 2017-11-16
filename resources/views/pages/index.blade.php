@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-	<h3>Pages</h3>
-	<a class="block my-4" href="{{ route('pages.create') }}">Create New Page</a>
-
-	<table class="b-0 bg-gray">
+	<div class="flex mb-6 border-b pb-3">
+		<h2 class="flex-1">Pages</h2>
+		<a class="flex-none bg-blue px-4 py-2 rounded text-white hover:bg-blue-dark no-underline" href="{{ route('pages.create') }}">Create New Page</a>
+	</div>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>Title</th>
 				<th>Slug</th>
-				<th></th>
+				<th>&nbsp;</th>
 			</tr>
 		</thead>
 	    @foreach($pages as $page)
