@@ -2,6 +2,7 @@
 
 @section('content')
 	<h2 class="mb-3">{{ $page->title }}</h2>
+	<a class="block mb-4" href="{{ route('pages.index') }}">Back to All</a>
 	@if (session('updated'))
 		<div class="p-3 my-4 rounded bg-green text-white">
 			Page updated successfully.
