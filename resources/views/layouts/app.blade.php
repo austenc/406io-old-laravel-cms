@@ -22,7 +22,7 @@
             <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <div class="lg:flex-grow">
                     @auth
-                        <a href="{{ route('pages.index') }}" class="nav-item">Manage Pages</a>
+                        <a href="{{ route('pages.index') }}" class="nav-item {{ request()->is('pages/*') ? 'active' : '' }}">Manage Pages</a>
                     @endauth
                 </div>
                 <div>
@@ -46,7 +46,7 @@
             </div>
         </nav>
 
-        <div class="container mx-auto pt-4 px-2">
+        <div class="container mx-auto pt-8 px-2">
             @yield('content')
         </div>
     </div>

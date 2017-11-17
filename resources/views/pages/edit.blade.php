@@ -1,22 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-	<h2 class="mb-3">{{ $page->title }}</h2>
-	<a class="block mb-4" href="{{ route('pages.index') }}">Back to All</a>
+	<h3 class="form-title">{{ $page->title }}</h3>
+	<a href="{{ route('pages.index') }}" class="block text-blue text-center mb-6 text-sm">&laquo; Back to all</a>
+
 	@if (session('updated'))
-		<div class="p-3 my-4 rounded bg-green text-white">
+		<div class="p-3 my-4 rounded bg-green-light text-white">
 			Page updated successfully.
 		</div>		
 	@endif
+	<form method="POST" action="{{ route('pages.update', $page) }}" class="card">
+		<div class="mb-4">
+			<label for="title" class="label">Title</label>
+			<input type="text" name="title" placeholder="Title" 
+				class="input @hasError(title)"
+				value="{{ old('title', $page->title) }}">
+			@include('validation.errors', ['field' => 'title'])
+		</div>
 
-	@include('validation.errors')
+		<div class="mb-4">
+			<label for="slug" class="label">Slug</label>
+			<input type="text" name="slug" placeholder="/your-great-url" 
+				class="input @hasError(slug)"
+				value="{{ old('slug', $page->slug) }}">
+			@include('validation.errors', ['field' => 'slug'])
+		</div>
 
-	<form method="POST" action="{{ route('pages.update', $page) }}">
-		<input type="text" name="title" placeholder="Title" value="{{ old('title', $page->title) }}"> <br>
-		<input type="text" name="slug" placeholder="/your-great-url" value="{{ old('slug', $page->slug) }}"> <br>
-		<textarea name="content" placeholder="Enter your content">
-			{{ old('content', $page->content) }}
-		</textarea> <br>
+		<div class="mb-4">			
+			<label for="content" class="label">Page Content</label>
+			<textarea class="input" name="content" placeholder="Enter your content">
+				{{ old('content', $page->content) }}
+			</textarea>
+		</div>
 
 		{{ csrf_field() }}
 		{{ method_field('PUT') }}

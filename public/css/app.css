@@ -509,6 +509,14 @@ button,
   margin-bottom: 0.5rem;
 }
 
+.form-title {
+  text-align: center;
+  color: #70818a;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
 .card {
   background-color: #ffffff;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
@@ -3615,10 +3623,20 @@ pre {
   margin-top: 1rem;
   color: #a0f0ed;
   text-decoration: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .nav-item:hover {
   color: #ffffff;
+}
+
+.nav-item.active {
+  color: #ffffff;
+  border-bottom: 2px solid #dae4e9;
+  border-color: #ffffff;
 }
 
 @media (min-width: 992px) {

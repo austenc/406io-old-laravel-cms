@@ -17,6 +17,10 @@
 	@apply .block .text-grey-darker .text-sm .font-bold .mb-2;
 }
 
+.form-title {
+	@apply .text-center .text-grey-dark .mt-8 .mb-6 .uppercase;
+}
+
 .card {
 	@apply .bg-white .shadow-md .rounded .px-8 .pt-6 .pb-8 .mb-4;
 }
@@ -48,10 +52,14 @@ code, pre {
 
 // Navigation
 .nav-item {
-	@apply .block .mt-4 .text-teal-lighter .no-underline;
+	@apply .block .mt-4 .text-teal-lighter .no-underline .py-2 .px-1;
 
 	&:hover {
 		@apply .text-white;
+	}
+
+	&.active {
+		@apply .text-white .border-b-2 .border-white;
 	}
 }
 
