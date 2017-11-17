@@ -15,10 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::directive('hasError', function ($field) {
-            $errors = session('errors', new MessageBag);
-            return $errors->has($field) ? ' border-red' : '';
-        });
     }
 
     /**

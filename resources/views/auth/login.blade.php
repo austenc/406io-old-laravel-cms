@@ -8,19 +8,30 @@
                 {{ csrf_field() }}
                 <div class="mb-4">
                     <label for="email" class="label">E-Mail Address</label>
-                    <input id="email" type="email" name="email" class="input @hasError($errors, 'email')" value="{{ old('email') }}" required autofocus>
-                    @include('validation.errors', ['field' => 'email'])
+                    @include('forms.input', [
+                        'name' => 'email', 
+                        'type' => 'email', 
+                        'value' => old('email'),
+                        'attributes' => 'required autofocus',
+                    ])
                 </div>
                 <div class="mb-6">
                     <label for="password" class="label">Password</label>
-                    <input id="password" type="password" name="password" class="input @hasError($errors, 'password')" value="{{ old('password') }}" required autofocus>
- 
-                    @include('validation.errors', ['field' => 'password'])
+                    @include('forms.input', [
+                        'name' => 'password',
+                        'type' => 'password',
+                        'value' => old('password')
+                    ])
                 </div>
 
                 <div class="mb-6">
                     <label class="text-gray-dark text-sm">
-                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                        @include('forms.input', [
+                            'name' => 'remember',
+                            'type' => 'checkbox',
+                            'class' => '',
+                            'attributes' => old('remember') ? 'checked' : ''
+                        ]) Remember Me
                     </label>
                 </div>
                 <div class="flex items-center justify-between">

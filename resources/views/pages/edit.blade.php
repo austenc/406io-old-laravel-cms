@@ -12,18 +12,12 @@
 	<form method="POST" action="{{ route('pages.update', $page) }}" class="card">
 		<div class="mb-4">
 			<label for="title" class="label">Title</label>
-			<input type="text" name="title" placeholder="Title" 
-				class="input @hasError(title)"
-				value="{{ old('title', $page->title) }}">
-			@include('validation.errors', ['field' => 'title'])
+			@include('forms.input', ['name' => 'title', 'value' => old('title', $page->title)])
 		</div>
 
 		<div class="mb-4">
 			<label for="slug" class="label">Slug</label>
-			<input type="text" name="slug" placeholder="/your-great-url" 
-				class="input @hasError(slug)"
-				value="{{ old('slug', $page->slug) }}">
-			@include('validation.errors', ['field' => 'slug'])
+			@include('forms.input', ['name' => 'slug', 'value' => old('slug', $page->slug)])
 		</div>
 
 		<div class="mb-4">			

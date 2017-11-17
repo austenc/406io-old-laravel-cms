@@ -7,13 +7,11 @@
 		{{ csrf_field() }}
 		<div class="mb-4">
 			<label for="title" class="label">Title</label>
-			<input type="text" name="title" placeholder="Title" class="input @hasError(title)">
-			@include('validation.errors', ['field' => 'title'])
+			@include('forms.input', ['name' => 'title'])
 		</div>
 		<div class="mb-4">
 			<label for="slug" class="label">Slug</label>
-			<input type="text" name="slug" placeholder="/your-great-url" class="input @hasError(slug)">
-			@include('validation.errors', ['field' => 'slug'])
+			@include('forms.input', ['name' => 'slug', 'placeholder' => '/your-great-url'])
 		</div>
 		<div class="mb-4">
 			<label for="content" class="label">Page Content</label>
