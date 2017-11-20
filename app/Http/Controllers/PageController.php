@@ -48,7 +48,7 @@ class PageController extends Controller
     {
         $request->validate([
             'title' => 'required|min:4|unique:pages',
-            'slug' => 'required|unique:pages',            
+            'slug' => 'required|alpha_dash|unique:pages',            
         ]);
 
         $page = Page::create($request->only(['title', 'slug', 'content']));
@@ -89,7 +89,7 @@ class PageController extends Controller
     {
         $request->validate([
             'title' => 'required|min:4|unique:pages,title,' . $page->id,
-            'slug' => 'required|unique:pages,slug,' . $page->id,            
+            'slug' => 'required|alpha_dash|unique:pages,slug,' . $page->id,            
         ]);
 
         $page->update($request->only(['title', 'slug', 'content']));
