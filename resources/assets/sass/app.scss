@@ -29,6 +29,10 @@
 	@apply .text-white .font-bold .py-2 .px-4 .rounded .no-underline;
 }
 
+.page-title {
+	@apply .py-6 .font-normal .text-xl .text-grey-dark;
+}
+
 a {
 	@apply .text-blue .no-underline;
 }
@@ -75,35 +79,4 @@ code, pre {
 	}
 }
 
-// Tables
-.table {
-	@apply .w-full .text-left;
-	border-collapse: collapse;
-
-	thead > tr > th {
-		@apply .font-bold .p-2 .pt-3 .text-grey-dark .bg-grey-light .uppercase .text-sm; 
-	}
-
-	tbody > tr > td {
-		@apply .py-3 .px-1 .border-b;
-	}
-
-	tbody > tr:hover {
-		> td {
-			@apply .bg-grey-lighter;
-
-			a {
-				@apply .visible;
-			}
-		}
-	}
-
-	tr > td:last-child a {
-		@apply .invisible .no-underline .text-blue .text-sm;
-
-		&:hover {
-			@apply .text-blue-darker .underline;
-		}		
-	}
-
-}
+@import 'tables';

@@ -53,6 +53,7 @@ class PageController extends Controller
 
         $page = Page::create($request->only(['title', 'slug', 'content']));
 
+        session()->flash('status', 'created');
         return redirect()->route('pages.edit', $page);
     }
 
@@ -94,7 +95,7 @@ class PageController extends Controller
 
         $page->update($request->only(['title', 'slug', 'content']));
 
-        session()->flash('updated', true);
+        session()->flash('status', 'updated');
         
         return redirect()->route('pages.edit', $page);
     }

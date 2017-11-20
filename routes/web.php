@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('pages', 'PageController');
+Route::get('/dashboard', 'DashboardController@index')->name('home');
+Route::resource('pages', 'PageController')->middleware('auth');
 
 Route::get('/{slug}', 'PageController@display');

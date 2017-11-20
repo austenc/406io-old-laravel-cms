@@ -1313,6 +1313,14 @@ button,
   text-decoration: none;
 }
 
+.page-title {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: #70818a;
+}
+
 a {
   color: #3490dc;
   text-decoration: none;
@@ -4432,8 +4440,8 @@ pre {
 
 .table thead > tr > th {
   font-weight: 700;
-  padding: 0.5rem;
-  padding-top: 0.75rem;
+  padding: 0.75rem;
+  padding-top: 1rem;
   color: #70818a;
   background-color: #dae4e9;
   text-transform: uppercase;

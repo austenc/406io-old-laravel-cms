@@ -26,10 +26,7 @@
                     @endauth
                 </div>
                 <div>
-                    @guest
-                        <a href="{{ route('login') }}" class="nav-item mr-4">Login</a>
-                        <a href="{{ route('register') }}" class="nav-item">Register</a>
-                    @else                  
+                    @auth                  
 
                         <a href="{{ route('logout') }}" 
                             class="nav-item"
@@ -41,7 +38,7 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    @endguest
+                    @endauth
                 </div>
             </div>
         </nav>
