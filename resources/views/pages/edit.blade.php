@@ -2,6 +2,7 @@
 
 @section('content')
 	<h3 class="form-title">{{ $page->title }}</h3>
+	<a href="{{ url($page->slug) }}">View Page</a>
 	<a href="{{ route('pages.index') }}" class="block text-blue text-center mb-6 text-sm">&laquo; Back to all</a>
 
 	@if (session('updated'))
@@ -22,9 +23,7 @@
 
 		<div class="mb-4">			
 			<label for="content" class="label">Page Content</label>
-			<textarea class="input" name="content" placeholder="Enter your content">
-				{{ old('content', $page->content) }}
-			</textarea>
+			<textarea class="input" name="content" placeholder="Enter your content">{{ old('content', $page->content) }}</textarea>
 		</div>
 
 		{{ csrf_field() }}

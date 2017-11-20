@@ -15,7 +15,7 @@
 		</div>
 		<div class="mb-4">
 			<label for="content" class="label">Page Content</label>
-			<textarea name="content" class="input" placeholder="Enter your content"></textarea>
+			<textarea name="content" class="input" placeholder="Enter your content">{{ old('content') }}</textarea>
 			@include('validation.errors', ['field' => 'content'])
 		</div>
 
