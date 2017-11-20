@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Parsedown;
 
 class Page extends Model
 {
@@ -11,4 +12,9 @@ class Page extends Model
     	'slug',
     	'content'
     ];
+
+    public function getContentAttribute($value)
+    {
+    	return (new Parsedown)->text($value);
+    }
 }
