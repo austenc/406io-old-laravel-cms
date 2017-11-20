@@ -23,7 +23,7 @@
 
 		<div class="mb-4">			
 			<label for="content" class="label">Page Content</label>
-			<textarea class="input" id="demo" 
+			<textarea class="input" id="page-content" 
 				name="content" 
 				placeholder="Enter your content">{{ old('content', $page->getOriginal('content')) }}</textarea>
 		</div>
@@ -38,6 +38,12 @@
 
 @section('scripts')
 	<script type="text/javascript">
-		new simpleMDE({ element: document.getElementById('demo') });
+		new simpleMDE({ 
+			element: document.getElementById('page-content'),
+			autosave: {
+				enabled: true,
+				uniqueId: 'page-content',
+			},
+		});
 	</script>
 @endsection
