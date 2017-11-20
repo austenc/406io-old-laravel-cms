@@ -39,6 +39,9 @@
 // Bring in the font
 @import url("https://fonts.googleapis.com/css?family=Avenir:200,300,400,600,700");
 
+// Simple MDE
+@import url('../../../node_modules/simplemde/dist/simplemde.min.css');
+
 body {
     font-family: 'Avenir', sans-serif;
     @apply .bg-grey-lighter

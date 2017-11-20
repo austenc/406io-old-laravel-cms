@@ -23,7 +23,9 @@
 
 		<div class="mb-4">			
 			<label for="content" class="label">Page Content</label>
-			<textarea class="input" name="content" placeholder="Enter your content">{{ old('content', $page->content) }}</textarea>
+			<textarea class="input" id="demo" 
+				name="content" 
+				placeholder="Enter your content">{{ old('content', $page->getOriginal('content')) }}</textarea>
 		</div>
 
 		{{ csrf_field() }}
@@ -32,4 +34,10 @@
 			Update Page
 		</button>
 	</form>
+@endsection
+
+@section('scripts')
+	<script type="text/javascript">
+		new simpleMDE({ element: document.getElementById('demo') });
+	</script>
 @endsection
