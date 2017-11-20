@@ -29,6 +29,9 @@
 	@apply .text-white .font-bold .py-2 .px-4 .rounded .no-underline;
 }
 
+a {
+	@apply .text-blue .no-underline;
+}
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -45,13 +48,6 @@
 body {
     font-family: 'Avenir', sans-serif;
     @apply .bg-grey-lighter;
-}
-a {
-	@apply .text-blue .no-underline;
-
-	&:hover {
-		@apply .underline;
-	}
 }
 code, pre {
     @apply .bg-grey-lighter .rounded .p-1 .text-sm;

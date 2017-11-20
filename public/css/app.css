@@ -1313,6 +1313,11 @@ button,
   text-decoration: none;
 }
 
+a {
+  color: #3490dc;
+  text-decoration: none;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -4377,15 +4382,6 @@ button,
 body {
   font-family: 'Avenir', sans-serif;
   background-color: #f3f7f9;
-}
-
-a {
-  color: #3490dc;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 code,

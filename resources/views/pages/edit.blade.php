@@ -2,9 +2,9 @@
 @section('title')
 	<div class="flex-1">
 		<h1 class="inline-block py-6 font-normal text-xl text-grey-dark">Edit Page</h1>
-		<a class="text-blue text-sm pl-4" href="{{ url($page->slug) }}">Preview</a>
+		<a class="text-blue text-sm hover:underline pl-4" href="{{ url($page->slug) }}">Preview</a>
 	</div>
-	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right text-sm">&laquo; Back to all</a>
+	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right hover:underline text-sm">&laquo; Back to all</a>
 @endsection
 @section('content')
 
