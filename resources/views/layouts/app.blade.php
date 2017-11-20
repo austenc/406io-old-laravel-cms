@@ -46,13 +46,13 @@
             </div>
         </nav>
 
-        <div class="container mx-auto pt-8 px-2">
+        <div class="container mx-auto py-8 px-2">
             @yield('content')
         </div>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    @yield('scripts')
+    @stack('scripts')
 </body>
 </html>

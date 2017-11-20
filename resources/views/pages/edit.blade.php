@@ -10,7 +10,7 @@
 			Page updated successfully.
 		</div>		
 	@endif
-	<form method="POST" action="{{ route('pages.update', $page) }}" class="card">
+	<form method="POST" action="{{ route('pages.update', $page) }}">
 		<div class="mb-4">
 			<label for="title" class="label">Title</label>
 			@include('forms.input', ['name' => 'title', 'value' => old('title', $page->title)])
@@ -36,14 +36,4 @@
 	</form>
 @endsection
 
-@section('scripts')
-	<script type="text/javascript">
-		new simpleMDE({ 
-			element: document.getElementById('page-content'),
-			autosave: {
-				enabled: true,
-				uniqueId: 'page-content',
-			},
-		});
-	</script>
-@endsection
+@include('simplemde')

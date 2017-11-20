@@ -44,7 +44,7 @@
 
 body {
     font-family: 'Avenir', sans-serif;
-    @apply .bg-grey-lighter
+    @apply .bg-grey-lighter;
 }
 code, pre {
     @apply .bg-grey-lighter .rounded .p-1 .text-sm;
