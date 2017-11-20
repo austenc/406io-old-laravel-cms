@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
+@section('title')
+	<h1 class="flex-1 py-6 font-normal text-xl text-grey-dark">Manage Pages</h1>
+	<a class="flex-none btn bg-blue hover:bg-blue-darker" href="{{ route('pages.create') }}">Create New Page</a>	
+@endsection
 @section('content')
-	<div class="flex mb-6 border-b pb-3">
-		<h2 class="flex-1">Pages</h2>
-		<a class="flex-none btn bg-blue hover:bg-blue-darker" href="{{ route('pages.create') }}">Create New Page</a>
-	</div>
 	<table class="table">
 		<thead>
 			<tr>

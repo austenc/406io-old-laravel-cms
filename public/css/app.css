@@ -1228,22 +1228,26 @@ textarea {
   font-family: inherit;
 }
 
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
   color: inherit;
   opacity: .5;
 }
 
-input:-ms-input-placeholder {
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
   color: inherit;
   opacity: .5;
 }
 
-input::-ms-input-placeholder {
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
   color: inherit;
   opacity: .5;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: inherit;
   opacity: .5;
 }
@@ -4373,6 +4377,15 @@ button,
 body {
   font-family: 'Avenir', sans-serif;
   background-color: #f3f7f9;
+}
+
+a {
+  color: #3490dc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 code,

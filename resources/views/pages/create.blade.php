@@ -1,8 +1,9 @@
 @extends('layouts.app')
-
+@section('title')
+	<h1 class="flex-1 py-6 font-normal text-xl text-grey-dark">Create New Page</h1>
+	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right text-sm">&laquo; Back to all</a>
+@endsection
 @section('content')
-	<h3 class="form-title">Create Page</h3>
-	<a href="{{ route('pages.index') }}" class="block text-blue text-center mb-6 text-sm">&laquo; Back to all</a>
 	<form method="POST" action="{{ route('pages.store') }}">
 		{{ csrf_field() }}
 		<div class="mb-4">

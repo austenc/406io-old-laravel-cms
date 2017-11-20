@@ -46,6 +46,13 @@ body {
     font-family: 'Avenir', sans-serif;
     @apply .bg-grey-lighter;
 }
+a {
+	@apply .text-blue .no-underline;
+
+	&:hover {
+		@apply .underline;
+	}
+}
 code, pre {
     @apply .bg-grey-lighter .rounded .p-1 .text-sm;
 }

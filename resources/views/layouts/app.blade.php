@@ -46,6 +46,11 @@
             </div>
         </nav>
 
+        <div class="flex items-center justify-between flex-wrap bg-grey-light px-6">
+            @section('title')
+            @show
+        </div>
+
         <div class="container mx-auto py-8 px-2">
             @yield('content')
         </div>

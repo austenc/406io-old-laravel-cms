@@ -1,9 +1,12 @@
 @extends('layouts.app')
-
+@section('title')
+	<div class="flex-1">
+		<h1 class="inline-block py-6 font-normal text-xl text-grey-dark">Edit Page</h1>
+		<a class="text-blue text-sm pl-4" href="{{ url($page->slug) }}">Preview</a>
+	</div>
+	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right text-sm">&laquo; Back to all</a>
+@endsection
 @section('content')
-	<h3 class="form-title">{{ $page->title }}</h3>
-	<a href="{{ url($page->slug) }}">View Page</a>
-	<a href="{{ route('pages.index') }}" class="block text-blue text-center mb-6 text-sm">&laquo; Back to all</a>
 
 	@if (session('updated'))
 		<div class="p-3 my-4 rounded bg-green-light text-white">
