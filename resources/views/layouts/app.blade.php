@@ -18,7 +18,7 @@
         @section('nav')
             <nav class="flex items-center justify-between flex-wrap bg-teal-dark p-6">
                 <div class="flex items-center flex-no-shrink text-white mr-6">            
-                    <span class="font-semibold text-xl tracking-tight">{{ config('app.name', '406.io') }}</span>
+                    <a href="{{ url('/') }}" class="font-semibold text-xl tracking-tight">{{ config('app.name', '406.io') }}</a>
                 </div>
                 <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                     <div class="lg:flex-grow">

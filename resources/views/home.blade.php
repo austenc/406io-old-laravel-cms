@@ -7,12 +7,14 @@
 		
 		{{-- List Recent Pages --}}
 		@foreach ($pages as $page)
-		<div class="text-center text-lg card mb-8">
+		<div class="text-center text-lg card mb-8 pb-2">
 			<a class="text-blue font-bold text-2xl text-left block" href="{{ $page->url }}">
 				{{ $page->title }}
 			</a>
 			<p class="mb-8 mt-4">
 				{{ str_limit(strip_tags($page->content), 200) }}
+				<br>
+				<a href="{{ $page->url }}" class="text-sm btn bg-blue inline-block mt-4 hover:bg-blue-darker">Read More</a>
 			</p>
 		</div>
 		@endforeach
