@@ -9,8 +9,6 @@ window._ = require('lodash');
 
 try {
     window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap-sass');
 } catch (e) {}
 
 /**
@@ -39,6 +37,8 @@ if (token) {
 
 // SimpleMDE markdown support
 window.simpleMDE = require('simplemde');
+
+window.hljs = require('highlight.js');
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

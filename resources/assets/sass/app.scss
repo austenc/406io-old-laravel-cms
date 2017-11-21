@@ -46,18 +46,25 @@ a {
 // Bring in the font
 @import url("https://fonts.googleapis.com/css?family=Avenir:200,300,400,600,700");
 
-// Simple MDE
+// Simple MDE & highlight.js for syntax highlighting
 @import url('../../../node_modules/simplemde/dist/simplemde.min.css');
+@import url('../../../node_modules/highlight.js/styles/agate.css');
 
 body {
     font-family: 'Avenir', sans-serif;
     @apply .bg-grey-lighter;
 }
-code, pre {
-    @apply .bg-grey-lighter .rounded .p-1 .text-sm;
+
+.editor-preview pre, .editor-preview-side pre {
+	@apply .bg-grey-darkest .text-white .p-4 .rounded;
 }
-.list li {
-    @apply .mb-6;
+
+.hljs {
+	@apply .rounded .p-4 .block .mb-4;
+}
+
+li {
+	@apply .mb-4;
 }
 
 // Navigation
