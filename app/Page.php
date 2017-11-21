@@ -17,4 +17,9 @@ class Page extends Model
     {
     	return (new Parsedown)->text($value);
     }
+
+    public function getUrlAttribute()
+    {
+    	return url($this->slug);
+    }
 }

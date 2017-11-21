@@ -26,7 +26,7 @@
 
 		<div class="mb-4">			
 			<label for="content" class="label">Page Content</label>
-			<textarea class="input" id="page-content" 
+			<textarea class="input" id="page-content-{{ $page->id }}" 
 				name="content" 
 				placeholder="Enter your content">{{ old('content', $page->getOriginal('content')) }}</textarea>
 		</div>

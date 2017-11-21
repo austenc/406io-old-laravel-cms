@@ -26,4 +26,4 @@
 	</form>
 @endsection
 
-@include('simplemde')
+@include('simplemde', ['disableAutosave' => true])
