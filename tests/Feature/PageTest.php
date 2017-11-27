@@ -14,7 +14,8 @@ class PageTest extends TestCase
     private $page = [
         'title' => 'Test Page',
         'slug' => 'example-page',
-        'content' => 'Example',
+        'content' => 'Example Content',
+        'excerpt' => 'This is an example',
     ];
 
     public function testCreate()
@@ -37,10 +38,28 @@ class PageTest extends TestCase
         $page = factory(Page::class)->create($this->page);
 
         $this->page['title'] = 'New Page';
+        $this->page['excerpt'] = 'Something';
 
         $response = $this->actingAs($user)->followingRedirects()
             ->put(route('pages.update', $page), $this->page);
 
         $this->assertDatabaseHas('pages', $this->page);
+    }
+
+    public function testExcerptShowsOnPostsPage()
+    {
+        $user = factory(User::class)->create();
+        $page = factory(Page::class)->create($this->page);
+        $response = $this->get('/');
+        $response->assertSee($this->page['excerpt']);
+    }
+
+    public function testExcerptDefaultsToContent()
+    {
+        unset($this->page['excerpt']);
+        $user = factory(User::class)->create();
+        $page = factory(Page::class)->create($this->page);
+        $response = $this->get('/');
+        $response->assertSee($this->page['content']);        
     }
 }

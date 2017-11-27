@@ -15,6 +15,10 @@
 			@include('forms.input', ['name' => 'slug', 'placeholder' => '/your-great-url'])
 		</div>
 		<div class="mb-4">
+			<label for="excerpt" class="label">Excerpt</label>
+			@include('forms.input', ['name' => 'excerpt'])
+		</div>
+		<div class="mb-4">
 			<label for="content" class="label">Page Content</label>
 			<textarea name="content" id="page-content" class="input" placeholder="Enter your content">{{ old('content') }}</textarea>
 			@include('validation.errors', ['field' => 'content'])

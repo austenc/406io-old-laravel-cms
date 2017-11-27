@@ -51,7 +51,7 @@ class PageController extends Controller
             'slug' => 'required|alpha_dash|unique:pages',            
         ]);
 
-        $page = Page::create($request->only(['title', 'slug', 'content']));
+        $page = Page::create($request->only(['title', 'slug', 'content', 'excerpt']));
 
         session()->flash('status', 'created');
         return redirect()->route('pages.edit', $page);
@@ -93,7 +93,7 @@ class PageController extends Controller
             'slug' => 'required|alpha_dash|unique:pages,slug,' . $page->id,            
         ]);
 
-        $page->update($request->only(['title', 'slug', 'content']));
+        $page->update($request->only(['title', 'slug', 'content', 'excerpt']));
 
         session()->flash('status', 'updated');
         

@@ -10,7 +10,8 @@ class Page extends Model
     protected $fillable = [
     	'title',
     	'slug',
-    	'content'
+    	'content',
+        'excerpt'
     ];
 
     public function getContentAttribute($value)
@@ -21,5 +22,10 @@ class Page extends Model
     public function getUrlAttribute()
     {
     	return url($this->slug);
+    }
+
+    public function getExcerptAttribute($value)
+    {
+        return empty($value) ? str_limit($this->content, 200) : $value;
     }
 }

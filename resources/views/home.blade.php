@@ -12,8 +12,7 @@
 				{{ $page->title }}
 			</a>
 			<p class="mb-8 mt-4">
-				{{ str_limit(strip_tags($page->content), 200) }}
-				<br>
+				{{ strip_tags($page->excerpt) }} <br>
 				<a href="{{ $page->url }}" class="text-sm btn bg-blue inline-block mt-4 hover:bg-blue-darker">Read More</a>
 			</p>
 		</div>

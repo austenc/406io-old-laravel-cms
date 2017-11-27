@@ -24,6 +24,11 @@
 			@include('forms.input', ['name' => 'slug', 'value' => old('slug', $page->slug)])
 		</div>
 
+		<div class="mb-4">
+			<label for="excerpt" class="label">Excerpt</label>
+			@include('forms.input', ['name' => 'excerpt', 'value' => old('excerpt', $page->getOriginal('excerpt'))])
+		</div>
+
 		<div class="mb-4">			
 			<label for="content" class="label">Page Content</label>
 			<textarea class="input" id="page-content-{{ $page->id }}" 
