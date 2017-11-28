@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -109,5 +110,25 @@ class PageController extends Controller
     public function destroy(Page $page)
     {
         //
+    }
+
+    public function publish(Page $page)
+    {
+        $page->update([
+            'published_at' => new Carbon
+        ]);
+
+        session()->flash('status', 'published');
+        return redirect()->route('pages.edit', $page);
+    }
+
+    public function unpublish(Page $page)
+    {
+        $page->update([
+            'published_at' => null
+        ]);
+
+        session()->flash('status', 'unpublished');
+        return redirect()->route('pages.edit', $page);
     }
 }

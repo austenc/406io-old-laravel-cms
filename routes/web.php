@@ -14,6 +14,12 @@
 Route::get('/', 'HomeController@index');
 Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('home');
+
+// Pages
 Route::resource('pages', 'PageController')->middleware('auth');
+Route::post('pages/{page}/publish', 'PageController@publish')
+	->name('pages.publish')->middleware('auth');
+Route::post('pages/{page}/unpublish', 'PageController@unpublish')
+	->name('pages.unpublish')->middleware('auth');
 
 Route::get('/{slug}', 'PageController@display');

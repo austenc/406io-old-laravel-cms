@@ -11,7 +11,8 @@ class Page extends Model
     	'title',
     	'slug',
     	'content',
-        'excerpt'
+        'excerpt',
+        'published_at',
     ];
 
     public function getContentAttribute($value)
