@@ -15,7 +15,6 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import 'vue-toast/dist/vue-toast.min.css'
 import VueToast from 'vue-toast'
 
 Vue.component('publish-button', require('./components/PublishButton.vue'));

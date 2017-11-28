@@ -49,6 +49,9 @@ a {
 // Simple MDE & highlight.js for syntax highlighting
 @import url('../../../node_modules/simplemde/dist/simplemde.min.css');
 @import url('../../../node_modules/highlight.js/styles/agate.css');
+@import url('../../../node_modules/vue-toast/dist/vue-toast.min.css');
+
+
 
 body {
     font-family: 'Avenir', sans-serif;
@@ -85,5 +88,37 @@ li {
 		@apply .inline-block .mt-0;
 	}
 }
+
+.vue-toast_container {
+	&._info .vue-toast_message {
+		@apply .bg-blue-light;
+	}
+	&._success .vue-toast_message {
+		@apply .bg-teal-dark;
+	}
+	&._warning .vue-toast_message {
+		@apply .bg-orange;
+	}
+	&._errpr .vue-toast_message {
+		@apply .bg-red-light;
+	}
+}
+
+.vue-toast_message {
+	@apply .rounded .px-3;
+}
+
+// .vue-toast_container._default .vue-toast_message {
+//     background-color: rgba(0, 0, 0, 0.9); }
+//   .vue-toast_container._info .vue-toast_message {
+//     background-color: rgba(49, 112, 143, 0.9); }
+//   .vue-toast_container._success .vue-toast_message {
+//     background-color: rgba(60, 118, 61, 0.9); }
+//   .vue-toast_container._warning .vue-toast_message {
+//     background-color: rgba(138, 109, 59, 0.9); }
+//   .vue-toast_container._error .vue-toast_message {
+//     background-color: rgba(169, 68, 66, 0.9); }
+
+
 
 @import 'tables';
