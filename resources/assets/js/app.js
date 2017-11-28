@@ -15,10 +15,20 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+import 'vue-toast/dist/vue-toast.min.css'
+import VueToast from 'vue-toast'
+
+Vue.component('publish-button', require('./components/PublishButton.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: {VueToast},
+    mounted() {
+        window.Toast = this.$refs.toast;
+        Toast.setOptions({
+            position: 'right bottom',
+        });
+	}
 });
 
 hljs.initHighlightingOnLoad();

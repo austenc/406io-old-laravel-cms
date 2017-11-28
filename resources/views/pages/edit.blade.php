@@ -3,12 +3,11 @@
 	<div class="flex-1">
 		<h1 class="inline-block page-title">Edit Page</h1>
 		<a class="text-blue text-sm hover:underline pl-4" href="{{ url($page->slug) }}">Preview</a>
-		@include('pages.publish', ['action' => $page->published_at ? 'unpublish' : 'publish'])
+		<publish-button :page="{{ $page->id }}" published="{{ !empty($page->published_at) }}"></publish-button>
 	</div>
 	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right hover:underline text-sm">&laquo; Back to all</a>
 @endsection
 @section('content')
-
 	@if (session('status'))
 		<div class="p-3 my-4 rounded bg-green-light text-white">
 			Page {{ session('status') }} successfully.

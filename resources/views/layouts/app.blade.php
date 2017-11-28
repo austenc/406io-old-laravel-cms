@@ -55,6 +55,8 @@
         <div class="container mx-auto py-8 px-2">
             @yield('content')
         </div>
+
+        <vue-toast ref="toast"></vue-toast>
     </div>
 
 
