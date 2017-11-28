@@ -17,7 +17,7 @@ class AddUserAccount extends Migration
         User::create([
             'name' => 'Austen Cameron',
             'email' => 'info@406.io',
-            'password' => bcrypt(str_random(10))
+            'password' => bcrypt(env('DEFAULT_PASSWORD', str_random(10)))
         ]);
     }
 
