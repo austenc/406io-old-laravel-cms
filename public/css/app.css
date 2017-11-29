@@ -4830,29 +4830,41 @@ li {
 
 .nav-item {
   display: block;
-  margin-top: 1rem;
-  color: #a0f0ed;
+  color: #9babb4;
   text-decoration: none;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 1.5rem;
 }
 
 .nav-item:hover {
-  color: #ffffff;
+  color: #38a89d;
+  background-color: #f3f7f9;
 }
 
 .nav-item.active {
   color: #ffffff;
-  border-bottom-width: 2px;
-  border-color: #ffffff;
+  background-color: #4dc0b5;
 }
 
 @media (min-width: 992px) {
   .nav-item {
     display: inline-block;
     margin-top: 0;
+    color: #a0f0ed;
+    background-color: transparent;
+  }
+
+  .nav-item:hover {
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  .nav-item.active {
+    color: #ffffff;
+    background-color: transparent;
   }
 }
 

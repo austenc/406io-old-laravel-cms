@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Auth::routes();
-Route::get('/dashboard', 'DashboardController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 // Pages
 Route::resource('pages', 'PageController')->middleware('auth');

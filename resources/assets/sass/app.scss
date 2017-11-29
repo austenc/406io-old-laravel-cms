@@ -72,20 +72,28 @@ li {
 
 // Navigation
 .nav-item {
-	@apply .block .mt-4 .text-teal-lighter .no-underline .py-2 .px-1;
+	@apply .block .text-grey .no-underline .py-4 .px-2 .pl-6;
 
 	&:hover {
-		@apply .text-white;
+		@apply .text-teal-dark .bg-grey-lighter;
 	}
 
 	&.active {
-		@apply .text-white .border-b-2 .border-white;
+		@apply .text-white .bg-teal;
 	}
 }
 
 @screen lg {
 	.nav-item {
-		@apply .inline-block .mt-0;
+		@apply .inline-block .mt-0 .text-teal-lighter .bg-transparent;
+
+		&:hover {
+			@apply .text-white .bg-transparent;
+		}
+
+		&.active {
+			@apply .text-white .bg-transparent;
+		}
 	}
 }
 
