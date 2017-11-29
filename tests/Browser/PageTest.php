@@ -23,13 +23,13 @@ class PageTest extends DuskTestCase
         $user = factory(User::class)->create();
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)->visit(route('pages.create'))
-                ->type('title', 'My Test Page')
+                ->type('input[name="title"]', 'My Test Page')
                 ->type('slug', 'test-page')
                 ->type('excerpt', 'Something')
                 ->value('textarea[name=content]', 'Test Content')
                 ->click('button[type=submit][class*="btn"]')
                 ->assertSee('Page created')
-                ->assertInputValue('title', 'My Test Page')
+                ->assertInputValue('input[name=title]', 'My Test Page')
                 ->assertInputValue('slug', 'test-page')
                 ->assertInputValue('excerpt', 'Something');
         });
