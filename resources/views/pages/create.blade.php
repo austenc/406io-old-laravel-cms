@@ -4,6 +4,8 @@
 	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right text-sm hover:underline">&laquo; Back to all</a>
 @endsection
 @section('content')
+	<markdown-editor></markdown-editor>
+	<hr class="mb-8">
 	<form method="POST" action="{{ route('pages.store') }}">
 		{{ csrf_field() }}
 		<div class="mb-4">
