@@ -97,7 +97,12 @@ li {
 	}
 }
 
-.vue-toast_container {
+// Set z-index specifically so toasts aren't behind simpleMDE
+.vue-toast-manager_container {
+	@apply .z-10;
+}
+
+.vue-toast_container {	
 	&._info .vue-toast_message {
 		@apply .bg-blue-light;
 	}
@@ -115,18 +120,5 @@ li {
 .vue-toast_message {
 	@apply .rounded .px-3;
 }
-
-// .vue-toast_container._default .vue-toast_message {
-//     background-color: rgba(0, 0, 0, 0.9); }
-//   .vue-toast_container._info .vue-toast_message {
-//     background-color: rgba(49, 112, 143, 0.9); }
-//   .vue-toast_container._success .vue-toast_message {
-//     background-color: rgba(60, 118, 61, 0.9); }
-//   .vue-toast_container._warning .vue-toast_message {
-//     background-color: rgba(138, 109, 59, 0.9); }
-//   .vue-toast_container._error .vue-toast_message {
-//     background-color: rgba(169, 68, 66, 0.9); }
-
-
 
 @import 'tables';

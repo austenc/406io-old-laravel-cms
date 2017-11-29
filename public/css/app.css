@@ -4868,6 +4868,10 @@ li {
   }
 }
 
+.vue-toast-manager_container {
+  z-index: 10;
+}
+
 .vue-toast_container._info .vue-toast_message {
   background-color: #6cb2eb;
 }

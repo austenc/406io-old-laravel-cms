@@ -76286,7 +76286,7 @@ var render = function() {
     "button",
     {
       staticClass:
-        "ml-4 py-1 px-2 bg-purple hover:bg-purple-dark rounded text-white",
+        "ml-4 py-1 text-xs pt-2 px-2 bg-purple hover:bg-purple-dark rounded text-white",
       attrs: { type: "submit", name: _vm.buttonName },
       on: {
         click: function($event) {
