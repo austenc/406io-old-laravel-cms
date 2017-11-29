@@ -4927,10 +4927,8 @@ li {
 }
 
 .table tr > td:last-child a {
-  visibility: hidden;
   text-decoration: none;
   color: #3490dc;
-  font-size: .875rem;
 }
 
 .table tr > td:last-child a:hover {

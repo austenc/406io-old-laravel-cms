@@ -22,7 +22,7 @@
 	}
 
 	tr > td:last-child a {
-		@apply .invisible .no-underline .text-blue .text-sm;
+		@apply .no-underline .text-blue;
 
 		&:hover {
 			@apply .text-blue-darker .underline;

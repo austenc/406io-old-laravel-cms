@@ -22,8 +22,8 @@
 		    	<tr>
 		    		<td class="pb-3">{{ $page->title }}</td>
 		    		<td class="pb-3">{{ $page->slug }}</td>
-		    		<td class="pb-3">
-		    			<a href="{{ url($page->slug) }}">View</a>  
+		    		<td class="pb-3 text-grey-dark">
+		    			<a href="{{ url($page->slug) }}">View</a> | 
 		    			<a href="{{ route('pages.edit', $page) }}">Edit</a>
 		    		</td>
 		    	</tr>

@@ -114,21 +114,15 @@ class PageController extends Controller
 
     public function publish(Page $page)
     {
-        $page->update([
+        return response()->json($page->update([
             'published_at' => new Carbon
-        ]);
-
-        session()->flash('status', 'published');
-        return redirect()->route('pages.edit', $page);
+        ]));
     }
 
     public function unpublish(Page $page)
     {
-        $page->update([
+        return response()->json($page->update([
             'published_at' => null
-        ]);
-
-        session()->flash('status', 'unpublished');
-        return redirect()->route('pages.edit', $page);
+        ]));
     }
 }
