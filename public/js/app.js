@@ -76380,18 +76380,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 var marked = __webpack_require__(13);
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			input: '_Some default text_'
+			input: '_Some default text_',
+			fullscreen: false
 		};
 	},
 
 	computed: {
+		fullscreenClass: function fullscreenClass() {
+			return this.fullscreen ? 'z-50 absolute w-full pin-t pin-l h-full' : '';
+		},
 		output: function output() {
 			return marked(this.input);
+		}
+	},
+
+	methods: {
+		toggleFullscreen: function toggleFullscreen() {
+			this.fullscreen = !this.fullscreen;
 		}
 	}
 });
@@ -76404,40 +76415,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "markdown-editor h-64 flex" }, [
-    _c("div", { staticClass: "editor flex-1" }, [
-      _c(
-        "textarea",
-        {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.input,
-              expression: "input"
-            }
-          ],
-          staticClass: "input mb-0 h-full rounded-r-none",
-          domProps: { value: _vm.input },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+  return _c(
+    "div",
+    {
+      staticClass: "markdown-editor flex flex-grow",
+      class: _vm.fullscreenClass
+    },
+    [
+      _c("div", { staticClass: "editor flex-1" }, [
+        _c(
+          "textarea",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.input,
+                expression: "input"
               }
-              _vm.input = $event.target.value
+            ],
+            staticClass: "input mb-0 p-4 h-full rounded-r-none",
+            domProps: { value: _vm.input },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.input = $event.target.value
+              }
             }
-          }
+          },
+          [_vm._v("\t\t\tType stuff\n\t\t")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "preview flex-1 p-4 bg-grey-light shadow rounded rounded-l-none"
         },
-        [_vm._v("\t\t\tType stuff\n\t\t")]
+        [
+          _c(
+            "a",
+            { staticClass: "block", on: { click: _vm.toggleFullscreen } },
+            [_vm._v("Fullscreen")]
+          ),
+          _vm._v(" "),
+          _c("div", { domProps: { innerHTML: _vm._s(_vm.output) } })
+        ]
       )
-    ]),
-    _vm._v(" "),
-    _c("div", {
-      staticClass:
-        "preview flex-1 p-4 bg-grey-light shadow rounded rounded-l-none",
-      domProps: { innerHTML: _vm._s(_vm.output) }
-    })
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
