@@ -36,10 +36,10 @@
 
         methods:  {
             togglePublish() {
-                var _this = this;
+                var self = this;
                 axios.post(this.url).then(function(response) {
-                    _this.isPublished = !_this.isPublished;
-                    Toast.showToast('Page ' + _this.successText, {theme: 'success'});
+                    self.isPublished = !self.isPublished;
+                    Toast.showToast('Page ' + self.successText, {theme: 'success'});
                 });
             }    
         },

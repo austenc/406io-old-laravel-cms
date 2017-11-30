@@ -48,8 +48,17 @@
 		methods: {
 			toggleFullscreen() {
 				this.fullscreen = !this.fullscreen;
+			}, 
+			closeOnEscape(evt) {
+				if (evt.keyCode === 27 && this.fullscreen) {
+					this.fullscreen = false;
+				}
 			}
 		},
+
+		mounted() {
+			document.addEventListener('keyup', this.closeOnEscape);
+		}
 	}
 </script>
 

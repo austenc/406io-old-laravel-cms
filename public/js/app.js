@@ -76262,10 +76262,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         togglePublish: function togglePublish() {
-            var _this = this;
+            var self = this;
             axios.post(this.url).then(function (response) {
-                _this.isPublished = !_this.isPublished;
-                Toast.showToast('Page ' + _this.successText, { theme: 'success' });
+                self.isPublished = !self.isPublished;
+                Toast.showToast('Page ' + self.successText, { theme: 'success' });
             });
         }
     },
@@ -76422,7 +76422,16 @@ var marked = __webpack_require__(13);
 	methods: {
 		toggleFullscreen: function toggleFullscreen() {
 			this.fullscreen = !this.fullscreen;
+		},
+		closeOnEscape: function closeOnEscape(evt) {
+			if (evt.keyCode === 27 && this.fullscreen) {
+				this.fullscreen = false;
+			}
 		}
+	},
+
+	mounted: function mounted() {
+		document.addEventListener('keyup', this.closeOnEscape);
 	}
 });
 
