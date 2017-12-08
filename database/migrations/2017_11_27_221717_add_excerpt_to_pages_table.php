@@ -14,7 +14,7 @@ class AddExcerptToPagesTable extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->string('excerpt')->after('slug')->nullable();
+            $table->text('excerpt')->after('slug')->nullable();
         });
     }
 
