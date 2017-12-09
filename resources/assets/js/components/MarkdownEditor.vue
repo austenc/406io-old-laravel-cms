@@ -1,6 +1,6 @@
 <template>
-	<div class="shadow flex flex-grow flex-col border border-grey-light" :class="fullscreenClass">
-		<div class="flex justify-between bg-grey-lighter text-grey h-10 p-2 border-b border-grey-light pt-3 px-4">
+	<div class="shadow flex flex-grow flex-col border border-grey-light" :class="fullscreenClass" style="min-height: 300px;">
+		<div class="flex justify-between bg-grey-lighter text-grey p-2 border-b border-grey-light pt-3 px-4">
 			<div>
 				Page Content
 			</div>
@@ -25,14 +25,19 @@
 				</button>
 			</div>
 		</div>
-		<div class="flex flex-grow flex-row">
+		<div :class="editorClass">
+
+			<!-- Editor -->
 			<div class="flex-1">
-				<textarea class="appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none" v-model="input">
+				<textarea ref="editor"
+					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none" v-model="input">
 					Type stuff
 				</textarea>
 			</div>
-			<div v-show="split" class="flex-1 p-4 bg-white rounded-none border-l border-grey-lighter">
-				<div v-html="output"></div>
+
+			<!-- Preview -->
+			<div v-show="split" ref="preview" :class="{'preview-fullscreen': fullscreen}" class="flex-1 bg-white rounded-none border-l border-grey-lighter overflow-y-scroll">
+				<div class="p-4 px-6" v-html="output"></div>
 			</div>
 		</div>
 	</div>
@@ -50,7 +55,10 @@
 		},
 		computed: {
 			fullscreenClass() {
-				return this.fullscreen ? 'z-50 absolute w-full pin-t pin-l h-full' : 'h-64';
+				return this.fullscreen ? 'z-50 w-full h-auto fixed pin-l pin-t' : '';
+			},
+			editorClass() {
+				return this.fullscreen ? 'flex fixed pin-l pin-t w-full h-screen overflow-hidden editor-fullscreen' : 'flex flex-grow flex-row';
 			},
 			output() {
 				return marked(this.input);
@@ -60,6 +68,7 @@
 		methods: {
 			toggleFullscreen() {
 				this.fullscreen = !this.fullscreen;
+				this.toggleBodyClass();
 			}, 
 			toggleSplit() {
 				this.split = !this.split;
@@ -68,11 +77,32 @@
 				if (evt.keyCode === 27 && this.fullscreen) {
 					this.fullscreen = false;
 				}
+			},
+			toggleBodyClass() {
+				if (this.fullscreen) {
+					if (this.body.classList)
+					  this.body.classList.add('overflow-hidden');
+					else
+					  this.body.className += ' ' + 'overflow-hidden';
+				} else {
+					if (this.body.classList)
+					  this.body.classList.remove('overflow-hidden');
+					else
+					  this.body.className = this.body.className.replace(new RegExp('(^|\\b)' + 'overflow-hidden' + '(\\b|$)', 'gi'), ' ');
+				}
 			}
 		},
 
 		mounted() {
+			this.body = document.getElementsByTagName('body')[0];
 			document.addEventListener('keyup', this.closeOnEscape);
+			var self = this;
+			this.$refs.editor.addEventListener('scroll', function() {
+				self.$refs.preview.scrollTop = self.$refs.editor.scrollTop;
+			});
+			this.$refs.preview.addEventListener('scroll', function() {
+				self.$refs.editor.scrollTop = self.$refs.preview.scrollTop;
+			});
 		}
 	}
 </script>
@@ -80,5 +110,17 @@
 <style>
 	.outline-none, .outline-none:focus {
 		outline: none;
+	}
+
+	.editor-toolbar {
+		height: 40px;
+	}
+
+	.editor-fullscreen {
+		top: 42px;
+	}
+
+	.preview-fullscreen, .editor-fullscreen textarea {
+		padding-bottom: 100px;
 	}
 </style>
