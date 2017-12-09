@@ -5,7 +5,7 @@
 				Page Content
 			</div>
 			<div class="text-right">		
-				<button @click="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="outline-none text-right text-grey hover:text-grey-dark mr-1">
+				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="outline-none text-right text-grey hover:text-grey-dark mr-1">
 
 					<!-- Single / Split Pane Icons -->
 					<svg v-show="split" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -16,7 +16,7 @@
 					</svg>
 				</button>
 
-				<button @click="toggleFullscreen" title="Fullscreen" class="outline-none text-right text-grey hover:text-grey-dark">
+				<button @click.prevent="toggleFullscreen" title="Fullscreen" class="outline-none text-right text-grey hover:text-grey-dark">
 					<!-- Close Icon -->
 					<svg v-show="fullscreen" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83 2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z"/></svg>
 
@@ -30,6 +30,7 @@
 			<!-- Editor -->
 			<div class="flex-1">
 				<textarea ref="editor"
+					:name="name"
 					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none" v-model="input">
 					Type stuff
 				</textarea>
@@ -46,6 +47,7 @@
 <script>
 	var marked = require('marked');
 	export default {
+		props: ['name', 'value'],
 		data() {
 			return {
 				input: '_Some default text_',
@@ -94,6 +96,7 @@
 		},
 
 		mounted() {
+			this.input = this.value;
 			this.body = document.getElementsByTagName('body')[0];
 			document.addEventListener('keyup', this.closeOnEscape);
 			var self = this;

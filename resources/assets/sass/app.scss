@@ -56,9 +56,9 @@ body {
     @apply .bg-grey-lighter;
 }
 
-.editor-preview pre, .editor-preview-side pre {
-	@apply .bg-grey-darkest .text-white .p-4 .rounded .overflow-scroll;
-}
+// .editor-preview pre, .editor-preview-side pre {
+// 	@apply .bg-grey-darkest .text-white .p-4 .rounded .overflow-scroll;
+// }
 
 .hljs {
 	@apply .rounded .p-4 .block .mb-4;

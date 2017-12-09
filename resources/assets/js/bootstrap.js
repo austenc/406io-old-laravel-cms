@@ -35,9 +35,6 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-// SimpleMDE markdown support
-window.simpleMDE = require('simplemde');
-
 // Syntax via Highlight.js 
 window.hljs = require('highlight.js');
 

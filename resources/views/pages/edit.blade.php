@@ -30,10 +30,7 @@
 		</div>
 
 		<div class="mb-4">			
-			<label for="content" class="label">Page Content</label>
-			<textarea class="input" id="page-content-{{ $page->id }}" 
-				name="content" 
-				placeholder="Enter your content">{{ old('content', $page->getOriginal('content')) }}</textarea>
+			<markdown-editor name="content" value="{{ old('content', $page->getOriginal('content')) }}"></markdown-editor>
 		</div>
 
 		{{ csrf_field() }}
@@ -43,5 +40,3 @@
 		</button>
 	</form>
 @endsection
-
-@include('simplemde')

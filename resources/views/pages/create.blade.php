@@ -4,7 +4,6 @@
 	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right text-sm hover:underline">&laquo; Back to all</a>
 @endsection
 @section('content')
-	<markdown-editor></markdown-editor>
 	<hr class="mb-8">
 	<form method="POST" action="{{ route('pages.store') }}">
 		{{ csrf_field() }}
@@ -21,10 +20,10 @@
 			@include('forms.input', ['name' => 'excerpt'])
 		</div>
 		<div class="mb-4">
-			<label for="content" class="label">Page Content</label>
-			<textarea name="content" id="page-content" class="input" placeholder="Enter your content">{{ old('content') }}</textarea>
 			@include('validation.errors', ['field' => 'content'])
+			<markdown-editor name="content" value="{{ old('content') }}"></markdown-editor>
 		</div>
+
 
 		<button type="submit" class="btn bg-blue hover:bg-blue-darker">
 			Save New Page
