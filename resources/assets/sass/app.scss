@@ -46,12 +46,10 @@ a {
 // Bring in the font
 @import url("https://fonts.googleapis.com/css?family=Avenir:200,300,400,600,700");
 
-// Simple MDE & highlight.js for syntax highlighting
-@import url('../../../node_modules/simplemde/dist/simplemde.min.css');
 @import url('../../../node_modules/highlight.js/styles/agate.css');
 @import url('../../../node_modules/vue-toast/dist/vue-toast.min.css');
 
-
+// ====
 
 body {
     font-family: 'Avenir', sans-serif;
@@ -59,7 +57,7 @@ body {
 }
 
 .editor-preview pre, .editor-preview-side pre {
-	@apply .bg-grey-darkest .text-white .p-4 .rounded;
+	@apply .bg-grey-darkest .text-white .p-4 .rounded .overflow-scroll;
 }
 
 .hljs {

@@ -36,7 +36,7 @@
 			</div>
 
 			<!-- Preview -->
-			<div v-show="split" ref="preview" :class="{'preview-fullscreen': fullscreen}" class="flex-1 bg-white rounded-none border-l border-grey-lighter overflow-y-scroll">
+			<div v-show="split" ref="preview" :class="{'preview-fullscreen': fullscreen}" class="editor-preview flex-1 bg-white rounded-none border-l border-grey-lighter overflow-y-scroll">
 				<div class="p-4 px-6" v-html="output"></div>
 			</div>
 		</div>
@@ -60,7 +60,7 @@
 			editorClass() {
 				return this.fullscreen ? 'flex fixed pin-l pin-t w-full h-screen overflow-hidden editor-fullscreen' : 'flex flex-grow flex-row';
 			},
-			output() {
+			output() {	
 				return marked(this.input);
 			}
 		},
@@ -103,6 +103,13 @@
 			this.$refs.preview.addEventListener('scroll', function() {
 				self.$refs.editor.scrollTop = self.$refs.preview.scrollTop;
 			});
+
+			var markedOptions = {};
+			markedOptions.highlight = function(code) {
+				return hljs.highlightAuto(code).value;
+			};
+			// Set options
+			marked.setOptions(markedOptions);
 		}
 	}
 </script>
@@ -117,7 +124,7 @@
 	}
 
 	.editor-fullscreen {
-		top: 42px;
+		top: 43px;
 	}
 
 	.preview-fullscreen, .editor-fullscreen textarea {

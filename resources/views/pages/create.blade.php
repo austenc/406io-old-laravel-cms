@@ -31,5 +31,3 @@
 		</button>
 	</form>
 @endsection
-
-@include('simplemde', ['disableAutosave' => true])

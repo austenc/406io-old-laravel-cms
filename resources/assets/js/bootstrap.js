@@ -38,6 +38,7 @@ if (token) {
 // SimpleMDE markdown support
 window.simpleMDE = require('simplemde');
 
+// Syntax via Highlight.js 
 window.hljs = require('highlight.js');
 
 /**
