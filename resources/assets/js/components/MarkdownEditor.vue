@@ -2,26 +2,26 @@
 	<div class="shadow flex flex-grow flex-col border border-grey-light" :class="fullscreenClass" style="min-height: 300px;">
 		<div class="flex justify-between bg-grey-lighter text-grey p-2 border-b border-grey-light pt-3 px-4">
 			<div>
-				Page Content
+				<button @click.prevent="insert('**', '**')" :title="'Bold (' + superKey + ' + B)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+					<font-awesome-icon icon="bold" />
+				</button>
+				<button @click.prevent="insert('*', '*')" :title="'Italic (' + superKey + ' + I)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+					<font-awesome-icon icon="italic" />
+				</button>
 			</div>
 			<div class="text-right">		
-				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="outline-none text-right text-grey hover:text-grey-dark mr-1">
+				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark mr-1">
 
 					<!-- Single / Split Pane Icons -->
-					<svg v-show="split" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-						<path d="M0 3c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm2 2v12h16V5H2z"/>
-					</svg>
-					<svg v-show="!split" class="w-4 h-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-					  <path d="M 9 17.357 L 9 4.607 L 11 4.607 L 11 17.357 L 9 17.357 Z M 0 3 C 0 1.9 0.9 1 2 1 L 18 1 C 19.105 1 20 1.895 20 3 L 20 17 C 20 18.105 19.105 19 18 19 L 2 19 C 0.895 19 0 18.105 0 17 L 0 3 Z M 2 5 L 2 17 L 18 17 L 18 5 L 2 5 Z"/>
-					</svg>
+					<font-awesome-icon :icon="['far', 'window-maximize']" v-show="split"></font-awesome-icon>
+					<font-awesome-icon icon="columns" v-show="!split"></font-awesome-icon>
 				</button>
 
-				<button @click.prevent="toggleFullscreen" title="Fullscreen" class="outline-none text-right text-grey hover:text-grey-dark">
-					<!-- Close Icon -->
-					<svg v-show="fullscreen" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm1.41-1.41A8 8 0 1 0 15.66 4.34 8 8 0 0 0 4.34 15.66zm9.9-8.49L11.41 10l2.83 2.83-1.41 1.41L10 11.41l-2.83 2.83-1.41-1.41L8.59 10 5.76 7.17l1.41-1.41L10 8.59l2.83-2.83 1.41 1.41z"/></svg>
-
+				<button @click.prevent="toggleFullscreen" title="Fullscreen" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark">
 					<!-- Fullscreen icon -->
-					<svg v-show="!fullscreen" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.8 15.8L0 13v7h7l-2.8-2.8 4.34-4.32-1.42-1.42L2.8 15.8zM17.2 4.2L20 7V0h-7l2.8 2.8-4.34 4.32 1.42 1.42L17.2 4.2zm-1.4 13L13 20h7v-7l-2.8 2.8-4.32-4.34-1.42 1.42 4.33 4.33zM4.2 2.8L7 0H0v7l2.8-2.8 4.32 4.34 1.42-1.42L4.2 2.8z"/></svg>
+					<font-awesome-icon icon="expand-arrows-alt" v-show="!fullscreen" />
+					<!-- Close Icon -->
+					<font-awesome-icon icon="window-close" v-show="fullscreen" />
 				</button>
 			</div>
 		</div>
@@ -30,8 +30,11 @@
 			<!-- Editor -->
 			<div class="flex-1">
 				<textarea ref="editor"
+					@keydown.66="bold"
+					@keydown.73="italic"
 					:name="name"
-					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none" v-model="input">
+					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none" 
+					v-model="input">
 					Type stuff
 				</textarea>
 			</div>
@@ -46,8 +49,13 @@
 
 <script>
 	var marked = require('marked');
+	import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+
 	export default {
 		props: ['name', 'value'],
+		components: {
+			FontAwesomeIcon
+		},
 		data() {
 			return {
 				input: '_Some default text_',
@@ -56,6 +64,9 @@
 			}
 		},
 		computed: {
+			superKey() {
+				return isMac() ? 'Cmd' : 'Ctrl';
+			},
 			fullscreenClass() {
 				return this.fullscreen ? 'z-50 w-full h-auto fixed pin-l pin-t' : '';
 			},
@@ -92,6 +103,37 @@
 					else
 					  this.body.className = this.body.className.replace(new RegExp('(^|\\b)' + 'overflow-hidden' + '(\\b|$)', 'gi'), ' ');
 				}
+			},
+
+			bold: cmdOrCtrl(function() {				
+				this.insert('**', '**');
+			}),
+
+			italic: cmdOrCtrl(function() {				
+				this.insert('*', '*');
+			}),
+
+			insert(start, end) {
+				// grab some info
+				let selStart = this.$refs.editor.selectionStart;
+				let selEnd = this.$refs.editor.selectionEnd;
+				let oldContent = this.$refs.editor.value;
+				this.$refs.editor.focus();
+
+				// If we're not selecting anything, put the content in right at the cursor
+				if (selStart === selEnd) {
+					this.$refs.editor.value = this.input.substring(0, selEnd) 
+						+ start + end + this.input.substring(selEnd, oldContent.length);
+					this.$refs.editor.setSelectionRange(selEnd + 2, selEnd + start.length + end.length - 2);
+
+				// Otherwise we need to surround the current selection with our tags
+				} else { 
+					this.$refs.editor.value = oldContent.substring(0, selStart) 
+					+ start + oldContent.substring(selStart, selEnd) + end 
+					+ oldContent.substring(selEnd, oldContent.length)
+
+					// this.$refs.editor.setSelectionRange(selEnd +)
+				}
 			}
 		},
 
@@ -107,12 +149,27 @@
 				self.$refs.editor.scrollTop = self.$refs.preview.scrollTop;
 			});
 
+			// Markdown parsing with marked
 			var markedOptions = {};
 			markedOptions.highlight = function(code) {
 				return hljs.highlightAuto(code).value;
 			};
-			// Set options
 			marked.setOptions(markedOptions);
+		}
+	}
+
+	function isMac() {
+		var platform = window.navigator.platform,
+		    macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
+
+		return macosPlatforms.indexOf(platform) !== -1;
+	}
+
+	function cmdOrCtrl(fn) {
+		return function (e) {
+		  if ((isMac() && e.metaKey) || e.ctrlKey) {
+		    return fn.apply(this, arguments)
+		  }
 		}
 	}
 </script>
@@ -127,7 +184,7 @@
 	}
 
 	.editor-fullscreen {
-		top: 43px;
+		top: 41px;
 	}
 
 	.preview-fullscreen, .editor-fullscreen textarea {
