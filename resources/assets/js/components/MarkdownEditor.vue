@@ -33,8 +33,9 @@
 					@keydown.66="bold"
 					@keydown.73="italic"
 					:name="name"
-					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none" 
-					v-model="input">
+					:value="input"
+					@input="update"
+					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none">
 					Type stuff
 				</textarea>
 			</div>
@@ -79,12 +80,18 @@
 		},
 
 		methods: {
+			update: _.debounce(function (e) {
+				this.input = e.target.value
+			}, 100),
+
 			toggleFullscreen() {
 				this.fullscreen = !this.fullscreen;
+				this.$refs.editor.focus();
 				this.toggleBodyClass();
 			}, 
 			toggleSplit() {
 				this.split = !this.split;
+				this.$refs.editor.focus();
 			},
 			closeOnEscape(evt) {
 				if (evt.keyCode === 27 && this.fullscreen) {
@@ -124,15 +131,19 @@
 				if (selStart === selEnd) {
 					this.$refs.editor.value = this.input.substring(0, selEnd) 
 						+ start + end + this.input.substring(selEnd, oldContent.length);
-					this.$refs.editor.setSelectionRange(selEnd + 2, selEnd + start.length + end.length - 2);
+					this.$refs.editor.setSelectionRange(selStart + start.length, selStart + start.length);
 
 				// Otherwise we need to surround the current selection with our tags
 				} else { 
 					this.$refs.editor.value = oldContent.substring(0, selStart) 
 					+ start + oldContent.substring(selStart, selEnd) + end 
-					+ oldContent.substring(selEnd, oldContent.length)
+					+ oldContent.substring(selEnd, oldContent.length);
 
-					// this.$refs.editor.setSelectionRange(selEnd +)
+					this.$refs.editor.setSelectionRange(selStart + start.length, selEnd + end.length);
+					this.$refs.editor.dispatchEvent(new Event('input', {
+						'bubbles': true,
+						'cancelable': true
+					}));
 				}
 			}
 		},
