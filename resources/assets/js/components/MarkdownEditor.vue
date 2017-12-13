@@ -127,6 +127,16 @@
 				let oldContent = this.$refs.editor.value;
 				this.$refs.editor.focus();
 
+				// If the start/end are already wrapping, remove them and return
+				if (this.input.substring(selStart - start.length, selStart) == start
+					&& this.input.substring(selEnd, selEnd + end.length) == end) {
+					this.$refs.editor.value = this.input.substring(0, selStart - start.length) 
+						+ this.input.substring(selStart, selEnd)
+						+ this.input.substring(selEnd + end.length, oldContent.length);
+					this.$refs.editor.setSelectionRange(selStart - start.length, selEnd - end.length);
+					return;
+				}	
+
 				// If we're not selecting anything, put the content in right at the cursor
 				if (selStart === selEnd) {
 					this.$refs.editor.value = this.input.substring(0, selEnd) 
