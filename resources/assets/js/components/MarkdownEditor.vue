@@ -59,6 +59,7 @@
 		},
 		data() {
 			return {
+				renderer: false,
 				input: '_Some default text_',
 				fullscreen: false,
 				split: true,
@@ -75,13 +76,13 @@
 				return this.fullscreen ? 'flex fixed pin-l pin-t w-full h-screen overflow-hidden editor-fullscreen' : 'flex flex-grow flex-row';
 			},
 			output() {	
-				return marked(this.input);
+				return marked(this.input, {renderer: this.renderer});
 			}
 		},
 
 		methods: {
 			update: _.debounce(function (e) {
-				this.input = e.target.value
+				this.input = e.target.value;
 			}, 100),
 
 			toggleFullscreen() {
@@ -177,11 +178,13 @@
 			});
 
 			// Markdown parsing with marked
-			var markedOptions = {};
-			markedOptions.highlight = function(code) {
-				return hljs.highlightAuto(code).value;
+			this.renderer = new marked.Renderer();
+
+			this.renderer.code = function(code, language){
+				return '<pre><code class="hljs">' 
+				+ hljs.highlightAuto(code).value 
+			    + '</code></pre>';
 			};
-			marked.setOptions(markedOptions);
 		}
 	}
 
