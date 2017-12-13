@@ -8,6 +8,9 @@
 				<button @click.prevent="insert('*', '*')" :title="'Italic (' + superKey + ' + I)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
 					<font-awesome-icon icon="italic" />
 				</button>
+				<button @click.prevent="insert('[', '](http://)')" :title="'Insert Link (' + superKey + ' + K)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+					<font-awesome-icon icon="link"/>
+				</button>
 			</div>
 			<div class="text-right">		
 				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark mr-1">
@@ -32,6 +35,7 @@
 				<textarea ref="editor"
 					@keydown.66="bold"
 					@keydown.73="italic"
+					@keydown.75="link"
 					:name="name"
 					:value="input"
 					@input="update"
@@ -49,156 +53,15 @@
 </template>
 
 <script>
-	var marked = require('marked');
 	import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
+	import Editor from '../mixins/editor';
+	import Fullscreen from '../mixins/fullscreen';
 
 	export default {
-		props: ['name', 'value'],
 		components: {
 			FontAwesomeIcon
 		},
-		data() {
-			return {
-				renderer: false,
-				input: '_Some default text_',
-				fullscreen: false,
-				split: true,
-			}
-		},
-		computed: {
-			superKey() {
-				return isMac() ? 'Cmd' : 'Ctrl';
-			},
-			fullscreenClass() {
-				return this.fullscreen ? 'z-50 w-full h-auto fixed pin-l pin-t' : '';
-			},
-			editorClass() {
-				return this.fullscreen ? 'flex fixed pin-l pin-t w-full h-screen overflow-hidden editor-fullscreen' : 'flex flex-grow flex-row';
-			},
-			output() {	
-				return marked(this.input, {renderer: this.renderer});
-			}
-		},
-
-		methods: {
-			update: _.debounce(function (e) {
-				this.input = e.target.value;
-			}, 100),
-
-			toggleFullscreen() {
-				this.fullscreen = !this.fullscreen;
-				this.$refs.editor.focus();
-				this.toggleBodyClass();
-			}, 
-			toggleSplit() {
-				this.split = !this.split;
-				this.$refs.editor.focus();
-			},
-			closeOnEscape(evt) {
-				if (evt.keyCode === 27 && this.fullscreen) {
-					this.fullscreen = false;
-				}
-			},
-			toggleBodyClass() {
-				if (this.fullscreen) {
-					if (this.body.classList)
-					  this.body.classList.add('overflow-hidden');
-					else
-					  this.body.className += ' ' + 'overflow-hidden';
-				} else {
-					if (this.body.classList)
-					  this.body.classList.remove('overflow-hidden');
-					else
-					  this.body.className = this.body.className.replace(new RegExp('(^|\\b)' + 'overflow-hidden' + '(\\b|$)', 'gi'), ' ');
-				}
-			},
-
-			bold: cmdOrCtrl(function() {				
-				this.insert('**', '**');
-			}),
-
-			italic: cmdOrCtrl(function() {				
-				this.insert('*', '*');
-			}),
-
-			insert(start, end) {
-				// grab some info
-				let selStart = this.$refs.editor.selectionStart;
-				let selEnd = this.$refs.editor.selectionEnd;
-				let oldContent = this.$refs.editor.value;
-
-				// Put our focus back in the editor
-				this.$refs.editor.focus();
-
-				// If the start/end are already wrapping, remove them and return
-				if (oldContent.substring(selStart - start.length, selStart) == start
-					&& oldContent.substring(selEnd, selEnd + end.length) == end) {
-					this.$refs.editor.value = oldContent.substring(0, selStart - start.length) 
-						+ oldContent.substring(selStart, selEnd)
-						+ oldContent.substring(selEnd + end.length, oldContent.length);
-					this.$refs.editor.setSelectionRange(selStart - start.length, selEnd - end.length);
-					this.$refs.editor.dispatchEvent(new Event('input', {
-						'bubbles': true,
-						'cancelable': true
-					}));
-					return;
-				}	
-
-				// If we're not selecting anything, put the content in right at the cursor
-				if (selStart === selEnd) {
-					document.execCommand("insertText", false, start + end);
-					this.$refs.editor.setSelectionRange(selStart + start.length, selStart + start.length);
-
-				// Otherwise we need to surround the current selection with our tags
-				} else {
-					let newContent = start + oldContent.substring(selStart, selEnd) + end;
-					document.execCommand("insertText", false, newContent); 
-
-					this.$refs.editor.setSelectionRange(selStart + start.length, selEnd + end.length);
-					this.$refs.editor.dispatchEvent(new Event('input', {
-						'bubbles': true,
-						'cancelable': true
-					}));
-				}
-			}
-		},
-
-		mounted() {
-			this.input = this.value;
-			this.body = document.getElementsByTagName('body')[0];
-			document.addEventListener('keyup', this.closeOnEscape);
-			var self = this;
-			this.$refs.editor.addEventListener('scroll', function() {
-				self.$refs.preview.scrollTop = self.$refs.editor.scrollTop;
-			});
-			this.$refs.preview.addEventListener('scroll', function() {
-				self.$refs.editor.scrollTop = self.$refs.preview.scrollTop;
-			});
-
-			// Markdown parsing with marked
-			this.renderer = new marked.Renderer();
-
-			this.renderer.code = function(code, language){
-				return '<pre><code class="hljs">' 
-				+ hljs.highlightAuto(code).value 
-			    + '</code></pre>';
-			};
-		}
-	}
-
-	function isMac() {
-		var platform = window.navigator.platform,
-		    macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
-
-		return macosPlatforms.indexOf(platform) !== -1;
-	}
-
-	function cmdOrCtrl(fn) {
-		return function (e) {
-		  if ((isMac() && e.metaKey) || e.ctrlKey) {
-		    return fn.apply(this, arguments)
-		  }
-		}
+		mixins: [Editor, Fullscreen],
 	}
 </script>
 
