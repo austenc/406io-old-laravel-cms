@@ -11,6 +11,7 @@ export default {
         return {
             input: 'Enter text here',
             renderer: false,
+            prevSelection: '',
         }
     },
 
@@ -25,6 +26,26 @@ export default {
             this.input = e.target.value;
         }, 100),
 
+        isLink(start, end) {
+            return start == '[' && end.substring(0, 2) == '](';
+        },
+
+        alreadyWrapped(start, end, selStart, selEnd, oldContent) {
+            // Is it the exact same start/end tags?
+            if (oldContent.substring(selStart - start.length, selStart) == start
+                && oldContent.substring(selEnd, selEnd + end.length) == end) {
+                return true;
+            }
+
+            // Check a special case in case it was a link
+            if (oldContent.substring(selStart - 2, selStart) == ']('
+                && oldContent.substring(selEnd, selEnd + 1) == ')') {
+                return true;
+            }
+
+            return false;
+        },
+
         insert(start, end) {
             // grab some info
             let selStart = this.$refs.editor.selectionStart;
@@ -35,16 +56,14 @@ export default {
             this.$refs.editor.focus();
 
             // If the start/end are already wrapping, remove them and return
+            if (this.alreadyWrapped(start, end, selStart, selEnd, oldContent)) {
+                this.removeWrappedTag(start, end, selStart, selEnd, oldContent);
+                return;
+            }
+
             if (oldContent.substring(selStart - start.length, selStart) == start
                 && oldContent.substring(selEnd, selEnd + end.length) == end) {
-                this.$refs.editor.value = oldContent.substring(0, selStart - start.length) 
-                    + oldContent.substring(selStart, selEnd)
-                    + oldContent.substring(selEnd + end.length, oldContent.length);
-                this.$refs.editor.setSelectionRange(selStart - start.length, selEnd - end.length);
-                this.$refs.editor.dispatchEvent(new Event('input', {
-                    'bubbles': true,
-                    'cancelable': true
-                }));
+                this.removeWrappedTag(start, end, selStart, selEnd, oldContent);
                 return;
             }   
 
@@ -58,13 +77,50 @@ export default {
                 let newContent = start + oldContent.substring(selStart, selEnd) + end;
                 document.execCommand("insertText", false, newContent); 
 
-                this.$refs.editor.setSelectionRange(selStart + start.length, selEnd + end.length);
-                this.$refs.editor.dispatchEvent(new Event('input', {
-                    'bubbles': true,
-                    'cancelable': true
-                }));
+                // If we're inserting a link, highlight the http portion
+                if (this.isLink(start, end)) {
+                    this.$refs.editor.setSelectionRange(selEnd + 3, selEnd + 10);
+                    this.prevSelection = oldContent.substring(selStart, selEnd);
+                } else {
+                    this.$refs.editor.setSelectionRange(selStart + start.length, selEnd + end.length);                    
+                }
+
+                this.dispatchInputEvent();
             }
-        }
+        },
+
+        removeWrappedTag(start, end, selStart, selEnd, oldContent) {
+            if (this.isLink(start, end) && selStart != selEnd) {
+                this.$refs.editor.value = oldContent.substring(0, selStart - this.prevSelection.length - 3) 
+                    + oldContent.substring(selStart - this.prevSelection.length - 2, selEnd - 9)
+                    + oldContent.substring(selEnd + 1, oldContent.length);
+                this.$refs.editor.setSelectionRange(
+                    selStart - this.prevSelection.length - 3,
+                    selEnd - 10
+                );
+            } else {
+                this.$refs.editor.value = oldContent.substring(0, selStart - start.length) 
+                        + oldContent.substring(selStart, selEnd)
+                        + oldContent.substring(selEnd + end.length, oldContent.length);                
+    
+                if (selStart == selEnd) {
+                    this.$refs.editor.setSelectionRange(selStart - start.length, selStart - start.length);                
+                } else {
+                    this.$refs.editor.setSelectionRange(selStart - start.length, selEnd - end.length);                
+                }
+            }
+
+
+            this.dispatchInputEvent();
+        },
+
+        dispatchInputEvent() {
+            this.$refs.editor.dispatchEvent(new Event('input', {
+                'bubbles': true,
+                'cancelable': true
+            }));
+        },
+
     },
     mounted() {
         this.input = this.value;
