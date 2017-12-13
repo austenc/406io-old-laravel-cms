@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             fullscreen: false,
-            split: false
+            split: true
         }
     },
 

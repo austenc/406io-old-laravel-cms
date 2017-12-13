@@ -36,6 +36,7 @@
 					@keydown.66="bold"
 					@keydown.73="italic"
 					@keydown.75="link"
+					@keydown.shift.70="fullscreenShortcut"
 					:name="name"
 					:value="input"
 					@input="update"
@@ -55,13 +56,14 @@
 <script>
 	import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 	import Editor from '../mixins/editor';
+	import Toolbar from '../mixins/toolbar';
 	import Fullscreen from '../mixins/fullscreen';
 
 	export default {
 		components: {
 			FontAwesomeIcon
 		},
-		mixins: [Editor, Fullscreen],
+		mixins: [Editor, Toolbar, Fullscreen],
 	}
 </script>
 

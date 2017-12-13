@@ -1,18 +1,3 @@
-// A few helper methods first
-function isMac() {
-    var platform = window.navigator.platform,
-        macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
-
-    return macosPlatforms.indexOf(platform) !== -1;
-}
-
-function cmdOrCtrl(fn) {
-    return function (e) {
-      if ((isMac() && e.metaKey) || e.ctrlKey) {
-        return fn.apply(this, arguments)
-      }
-    }
-}
 
 // Include marked for parsing
 var marked = require('marked');
@@ -30,9 +15,6 @@ export default {
     },
 
     computed: {
-        superKey() {
-            return isMac() ? 'Cmd' : 'Ctrl';
-        },
         output() {  
             return marked(this.input, {renderer: this.renderer});
         }
@@ -42,18 +24,6 @@ export default {
         update: _.debounce(function (e) {
             this.input = e.target.value;
         }, 100),
-
-        bold: cmdOrCtrl(function() {                
-            this.insert('**', '**');
-        }),
-
-        italic: cmdOrCtrl(function() {              
-            this.insert('*', '*');
-        }),
-
-        link: cmdOrCtrl(function() {
-            this.insert('[', '](http://)');
-        }),
 
         insert(start, end) {
             // grab some info
