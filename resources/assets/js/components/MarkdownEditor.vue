@@ -146,15 +146,13 @@
 
 				// If we're not selecting anything, put the content in right at the cursor
 				if (selStart === selEnd) {
-					this.$refs.editor.value = this.input.substring(0, selEnd) 
-						+ start + end + this.input.substring(selEnd, oldContent.length);
+					document.execCommand("insertText", false, start + end);
 					this.$refs.editor.setSelectionRange(selStart + start.length, selStart + start.length);
 
 				// Otherwise we need to surround the current selection with our tags
-				} else { 
-					this.$refs.editor.value = oldContent.substring(0, selStart) 
-					+ start + oldContent.substring(selStart, selEnd) + end 
-					+ oldContent.substring(selEnd, oldContent.length);
+				} else {
+					let newContent = start + oldContent.substring(selStart, selEnd) + end;
+					document.execCommand("insertText", false, newContent); 
 
 					this.$refs.editor.setSelectionRange(selStart + start.length, selEnd + end.length);
 					this.$refs.editor.dispatchEvent(new Event('input', {
