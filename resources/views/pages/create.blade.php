@@ -21,7 +21,7 @@
 		</div>
 		<div class="mb-4">
 			@include('validation.errors', ['field' => 'content'])
-			<markdown-editor name="content" value="{{ old('content') }}"></markdown-editor>
+			<markdown-editor name="content" :content="'{{ old('content') }}'"></markdown-editor>
 		</div>
 
 

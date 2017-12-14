@@ -5,7 +5,7 @@ var marked = require('marked');
 // Editor mixin
 export default {
 
-    props: ['name', 'value'],
+    props: ['name', 'content'],
 
     data() {
         return {
@@ -123,11 +123,7 @@ export default {
 
     },
     mounted() {
-        this.input = this.value;
-
-        marked.setOptions({
-          sanitize: true,
-        });
+        this.input = this.content;
 
         // Markdown parsing with marked
         this.renderer = new marked.Renderer();

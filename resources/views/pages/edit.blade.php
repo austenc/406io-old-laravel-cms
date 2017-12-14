@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="mb-4">			
-			<markdown-editor name="content" value="{{ old('content', $page->getOriginal('content')) }}"></markdown-editor>
+			<markdown-editor name="content" :content="'{{ old('content', $page->rawContent) }}'"></markdown-editor>
 		</div>
 
 		{{ csrf_field() }}
