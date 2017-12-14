@@ -10,6 +10,6 @@ class HomeController extends Controller
     public function index()
     {
     	return view('home')
-    		->withPages(Page::orderBy('created_at', 'desc')->get());
+    		->withPages(Page::published()->orderBy('created_at', 'desc')->get());
     }
 }

@@ -29,4 +29,9 @@ class Page extends Model
     {
         return empty($value) ? str_limit($this->content, 200) : $value;
     }
+
+    public function scopePublished($query)
+    {
+        $query->whereNotNull('published_at');
+    }
 }
