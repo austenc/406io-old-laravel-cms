@@ -125,6 +125,10 @@ export default {
     mounted() {
         this.input = this.value;
 
+        marked.setOptions({
+          sanitize: true,
+        });
+
         // Markdown parsing with marked
         this.renderer = new marked.Renderer();
 

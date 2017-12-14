@@ -36,6 +36,7 @@
 					@keydown.66="bold"
 					@keydown.73="italic"
 					@keydown.75="link"
+					@keydown.enter="saveOnEnter"
 					@keydown.shift.70="fullscreenShortcut"
 					:name="name"
 					:value="input"

@@ -26,6 +26,10 @@ export default {
             this.toggleFullscreen();
         }),
 
+        saveOnEnter: cmdOrCtrl(function() {              
+            this.$refs.editor.form.submit();
+        }),
+
         bold: cmdOrCtrl(function() {                
             this.insert('**', '**');
         }),
