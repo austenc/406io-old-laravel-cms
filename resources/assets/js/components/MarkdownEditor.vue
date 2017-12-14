@@ -11,6 +11,9 @@
 				<button @click.prevent="insert('[', '](http://)')" :title="'Insert Link (' + superKey + ' + K)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
 					<font-awesome-icon icon="link"/>
 				</button>
+				<button @click.prevent="insert('- ', '')" :title="'Unordered List (' + superKey + ' + Shift + L)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+					<font-awesome-icon icon="list"/>
+				</button>
 			</div>
 			<div class="text-right">		
 				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark mr-1">
@@ -38,6 +41,7 @@
 					@keydown.75="link"
 					@keydown.enter="saveOnEnter"
 					@keydown.shift.70="fullscreenShortcut"
+					@keydown.shift.76="unorderedList"
 					:name="name"
 					:value="input"
 					@input="update"

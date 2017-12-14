@@ -41,5 +41,9 @@ export default {
         link: cmdOrCtrl(function() {
             this.insert('[', '](http://)');
         }),
+
+        unorderedList: cmdOrCtrl(function() {
+            this.insert('- ', '');
+        }),
     }
 }
