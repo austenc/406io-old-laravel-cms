@@ -17,7 +17,7 @@ export default {
 
     computed: {
         output() {  
-            return marked(this.input, {renderer: this.renderer});
+            return marked(this.input, {renderer: this.renderer, sanitize: true});
         }
     },
 

@@ -20,9 +20,9 @@ class Page extends Model
     	return (new Parsedown)->text($value);
     }
 
-    public function getRawContentAttribute()
+    public function getJsonContentAttribute()
     {
-        return $this->getOriginal('content');
+        return json_encode($this->getOriginal('content'));
     }
 
     public function getUrlAttribute()
