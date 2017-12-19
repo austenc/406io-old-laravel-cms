@@ -64,7 +64,7 @@
             @show
         </div>
         
-        <div class="container mx-auto py-8 px-2">
+        <div class="container mx-auto w-3/4 py-8 px-2">
             @yield('content')
         </div>
 
@@ -72,7 +72,7 @@
     </div>
 
 
-    <div class="mx-auto w-full p-4 text-center text-sm text-grey pt-8">
+    <div class="footer">
         Copyright &copy; {{ date('Y') }} Austen Cameron, all rights reserved
     </div>
 
