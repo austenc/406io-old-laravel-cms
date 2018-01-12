@@ -78,14 +78,26 @@ h3, h4 {
 	// background-color: rgba(255,255,255, 0.6);
 	background: linear-gradient(to bottom, 
 		rgba(255,255,255,0.65) 13%,
-		rgba(255,255,255,0.65) 68%,
-		rgba(255,255,255,0.62) 80%,
+		rgba(255,255,255,0.65) 70%,
+		rgba(255,255,255,0.65) 85%,
 		rgba(0,0,0,0) 100%
 	); 
 }
 
+.navbar-admin {
+	@apply .flex .items-center .justify-between .flex-wrap .bg-orange-dark .px-4 .py-1;
+}
+
+.admin-title-bar {
+	@apply .text-xs .flex .items-center .justify-between .flex-wrap .bg-grey-light .px-6 .border-t;
+
+	h1 {
+		@apply .text-base;
+	}
+}
+
 .footer {
-	@apply .mx-auto .w-full .px-4 .text-center .text-sm .text-white .pt-8 .pb-2;
+	@apply .mx-auto .w-full .px-4 .text-center .text-sm .text-white .pt-8 .pb-6;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 }
 
@@ -110,13 +122,25 @@ li {
 	}
 
 	&.active {
-		@apply .text-white .bg-teal;
+		@apply .text-white .bg-orange;
 	}
 }
 
 @screen lg {
+	.navbar-admin {
+		text-shadow: -1px 1px 0px rgba(0,0,0, 0.3);
+	}
+
+	.admin-title-bar {
+		@apply .text-sm;
+
+		h1 {
+			@apply .text-lg;
+		}
+	}
+	
 	.nav-item {
-		@apply .inline-block .mt-0 .text-teal-lighter .bg-transparent;
+		@apply .inline-block .mt-0 .text-orange-lighter .bg-transparent;
 
 		&:hover {
 			@apply .text-white .bg-transparent;
