@@ -1,7 +1,7 @@
 @extends('layouts.page')
 
 @section('content')
-	<h1 class="mb-2 text-center">{{ $page->title }}</h1>
+	<h1 class="mb-2 mt-6 text-center">{{ $page->title }}</h1>
 	<div class="text-center text-grey-dark text-sm">
 		Posted {{ $page->created_at->format('M dS, Y') }}
 	</div>

@@ -9,3 +9,7 @@
     </div>
 </div>
 @endsection
+
+@section('comments')
+    @include('partials.disqus')
+@endsection

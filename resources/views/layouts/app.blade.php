@@ -58,19 +58,23 @@
         </nav>
     @show
 
-    <div id="app">
-        <div class="admin-title-bar">
-            @section('title')
-            @show
-        </div>
+    <div class="wrap">
+        <div id="app">
+            <div class="admin-title-bar">
+                @section('title')
+                @show
+            </div>
+            
+            <div class="container mx-auto w-3/4 pb-8 pt-2 px-2">
+                @yield('content')
+            </div>
         
-        <div class="container mx-auto w-3/4 pb-8 pt-2 px-2">
-            @yield('content')
+            <vue-toast ref="toast"></vue-toast>
         </div>
 
-        <vue-toast ref="toast"></vue-toast>
-    </div>
+        @yield('comments')
 
+    </div>
 
     <div class="footer">
         Copyright &copy; {{ date('Y') }} Austen Cameron, all rights reserved
