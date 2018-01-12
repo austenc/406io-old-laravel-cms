@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 
 class PublishedOnly
@@ -15,7 +16,7 @@ class PublishedOnly
      */
     public function handle($request, Closure $next)
     {
-        if (empty($request->route('page')->published_at)) {
+        if (Auth::guest() && empty($request->route('page')->published_at)) {
             abort(404);
         }
 
