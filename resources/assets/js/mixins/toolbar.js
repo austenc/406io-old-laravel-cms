@@ -54,8 +54,12 @@ export default {
                 } else {
                     document.execCommand("insertText", false, "\n" + '- ');
                 }
-            }         
+            }     
 
+            this.$refs.editor.dispatchEvent(new Event('input', {
+                'bubbles': true,
+                'cancelable': true
+            }));    
         },
 
         bold: cmdOrCtrl(function() {                
