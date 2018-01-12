@@ -45,6 +45,19 @@ a {
 	border-color: #EE7F3C;
 }
 
+.logo {
+	color: #8c9da5;
+	font-family: 'Rationale', sans-serif;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 2rem;
+
+	img {
+		vertical-align: bottom;
+		max-width: 40px;		
+	}
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -52,7 +65,7 @@ a {
 @tailwind utilities;
 
 // Bring in the font
-@import url("https://fonts.googleapis.com/css?family=Avenir:200,300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Rationale|Source+Code+Pro|Avenir:200,300,400,600,700");
 
 @import url('../../../node_modules/highlight.js/styles/agate.css');
 @import url('../../../node_modules/vue-toast/dist/vue-toast.min.css');
@@ -67,10 +80,6 @@ body {
 
 h3, h4 {
 	@apply .mt-6 .mb-2;
-}
-
-.logo {
-	max-width: 130px;
 }
 
 .wrap {
