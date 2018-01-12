@@ -15,6 +15,11 @@ class Page extends Model
         'published_at',
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function getContentAttribute($value)
     {
     	return (new Parsedown)->text($value);
