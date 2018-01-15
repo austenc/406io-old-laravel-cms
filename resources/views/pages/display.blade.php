@@ -12,3 +12,7 @@
 		{!! $page->content !!}
 	</div>
 @endsection
+
+@section('comments')
+    @include('partials.disqus')
+@endsection

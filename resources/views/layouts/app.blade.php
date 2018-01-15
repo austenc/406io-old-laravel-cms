@@ -77,10 +77,29 @@
     </div>
 
     <div class="footer">
-        Copyright &copy; {{ date('Y') }} Austen Cameron, all rights reserved
+        <strong class="text-lg block mb-4 font-heading">
+            <i class="fa fa-heart text-red"></i> Follow Me On Social Media 
+        </strong>
+        <div class="text-xl mb-4">
+            <div class="fa-2x">
+                <a href="https://twitch.tv/406io" class="fa-layers fa-fw text-white twitch-icon">
+                    <i class="fas fa-circle"></i>
+                    <i class="fab fa-twitch" data-fa-transform="shrink-6"></i>
+                </a>
+                <a href="https://twitter.com/406io" class="fa-layers fa-fw text-white twitter-icon">
+                    <i class="fas fa-circle"></i>
+                    <i class="fab fa-twitter" data-fa-transform="shrink-6"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="copyright">
+            Copyright &copy; {{ date('Y') }} Austen Cameron, all rights reserved
+        </div>
     </div>
 
     <!-- Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 </body>
