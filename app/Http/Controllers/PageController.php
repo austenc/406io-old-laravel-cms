@@ -8,15 +8,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function display($slug)
+    public function display(Page $page)
     {
-        $page = Page::where('slug', $slug)->first();
-
-        if ($page) {
-            return view('pages.display')->withPage($page);
-        }
-
-        abort(404);        
+        return view('pages.display')->withPage($page);
     }
 
     /**

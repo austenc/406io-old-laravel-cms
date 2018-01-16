@@ -22,4 +22,4 @@ Route::post('pages/{page}/publish', 'PageController@publish')
 Route::post('pages/{page}/unpublish', 'PageController@unpublish')
 	->name('pages.unpublish')->middleware('auth');
 
-Route::get('/{slug}', 'PageController@display');
+Route::get('/{page}', 'PageController@display')->middleware('publishedOnly');

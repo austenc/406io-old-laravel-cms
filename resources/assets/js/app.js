@@ -32,6 +32,7 @@ $(function() {
 import VueToast from 'vue-toast'
 
 Vue.component('publish-button', require('./components/PublishButton.vue'));
+Vue.component('markdown-editor', require('./components/MarkdownEditor.vue'));
 
 const app = new Vue({
     el: '#app',

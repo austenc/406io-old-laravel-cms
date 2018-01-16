@@ -1,14 +1,21 @@
 // Tables
 .table {
-	@apply .w-full .text-left;
+	@apply .w-full .text-left .mt-6;
 	border-collapse: collapse;
 
 	thead > tr > th {
 		@apply .font-bold .p-3 .pt-4 .text-grey-dark .bg-grey-light .uppercase .text-sm; 
+
+		&:first-child {
+			@apply .rounded-tl;
+		}
+		&:last-child {
+			@apply .rounded-tr;
+		}
 	}
 
 	tbody > tr > td {
-		@apply .py-3 .px-1 .border-b;
+		@apply .py-3 .px-2 .border-b;
 	}
 
 	tbody > tr:hover {

@@ -37,6 +37,27 @@ a {
 	@apply .text-blue .no-underline;
 }
 
+.bg-light {
+	background-color: rgba(255,255,255,0.65);
+}
+
+.border-brand {
+	border-color: #EE7F3C;
+}
+
+.logo {
+	color: #8c9da5;
+	font-family: 'Rationale', sans-serif;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 2rem;
+
+	img {
+		vertical-align: bottom;
+		max-width: 40px;		
+	}
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -44,22 +65,82 @@ a {
 @tailwind utilities;
 
 // Bring in the font
-@import url("https://fonts.googleapis.com/css?family=Avenir:200,300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Rationale|Source+Code+Pro|Avenir:200,300,400,600,700");
 
-// Simple MDE & highlight.js for syntax highlighting
-@import url('../../../node_modules/simplemde/dist/simplemde.min.css');
 @import url('../../../node_modules/highlight.js/styles/agate.css');
 @import url('../../../node_modules/vue-toast/dist/vue-toast.min.css');
 
-
-
+// ====
 body {
     font-family: 'Avenir', sans-serif;
     @apply .bg-grey-lighter;
+    background: #FAF6F2 url('/img/bg.jpg') 0 175px fixed no-repeat;
+    background-size: cover;
+}
+
+h3, h4 {
+	@apply .mt-6 .mb-2;
+}
+
+.font-heading {
+	font-family: 'Rationale', 'Source Code Pro', sans-serif;
+}
+
+.twitch-icon {
+	.fa-circle {
+		color: #6441A4;		
+	}
+	&:hover {
+		color: #6441A4;
+		.fa-circle {
+			@apply .text-white;
+		}
+	}
+}
+
+.twitter-icon {
+	.fa-circle {
+		color: #1DA1F2;		
+	}
+	&:hover {
+		color: #1DA1F2;
+		.fa-circle {
+			@apply .text-white;
+		}
+	}
+}
+
+.wrap {
+	// background-color: rgba(255,255,255, 0.6);
+	background: linear-gradient(to bottom, 
+		rgba(255,255,255,0.65) 13%,
+		rgba(255,255,255,0.65) 70%,
+		rgba(255,255,255,0.65) 85%,
+		rgba(0,0,0,0) 100%
+	); 
+}
+
+.navbar-admin {
+	@apply .flex .items-center .justify-between .flex-wrap .bg-orange-dark .px-4 .py-1;
+}
+
+.admin-title-bar {
+	@apply .text-xs .flex .items-center .justify-between .flex-wrap .bg-grey-light .px-6 .border-t;
+
+	h1 {
+		@apply .text-base;
+	}
+}
+
+.footer {
+	@apply .mx-auto .w-full .px-4 .text-center .text-sm .text-white .pb-6;
+	padding-top: 120px;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+	padding-bottom: 32px;
 }
 
 .editor-preview pre, .editor-preview-side pre {
-	@apply .bg-grey-darkest .text-white .p-4 .rounded;
+	@apply .my-2;
 }
 
 .hljs {
@@ -79,13 +160,25 @@ li {
 	}
 
 	&.active {
-		@apply .text-white .bg-teal;
+		@apply .text-white .bg-orange;
 	}
 }
 
 @screen lg {
+	.navbar-admin {
+		text-shadow: -1px 1px 0px rgba(0,0,0, 0.3);
+	}
+
+	.admin-title-bar {
+		@apply .text-sm;
+
+		h1 {
+			@apply .text-lg;
+		}
+	}
+	
 	.nav-item {
-		@apply .inline-block .mt-0 .text-teal-lighter .bg-transparent;
+		@apply .inline-block .mt-0 .text-orange-lighter .bg-transparent;
 
 		&:hover {
 			@apply .text-white .bg-transparent;

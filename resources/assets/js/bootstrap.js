@@ -35,10 +35,14 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-// SimpleMDE markdown support
-window.simpleMDE = require('simplemde');
-
+// Syntax via Highlight.js 
 window.hljs = require('highlight.js');
+
+import fontawesome from '@fortawesome/fontawesome'
+import solid from '@fortawesome/fontawesome-free-solid'
+import regular from '@fortawesome/fontawesome-free-regular'
+
+fontawesome.library.add(solid, regular)
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

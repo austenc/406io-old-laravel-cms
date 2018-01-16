@@ -2,8 +2,8 @@
 @section('title')
 	<div class="flex-1">
 		<h1 class="inline-block page-title">Edit Page</h1>
-		<a class="text-blue text-sm hover:underline pl-4" href="{{ url($page->slug) }}">Preview</a>
-		<publish-button :page="{{ $page->id }}" published="{{ !empty($page->published_at) }}"></publish-button>
+		<publish-button page="{{ $page->slug }}" published="{{ !empty($page->published_at) }}"></publish-button>
+		<a class="text-blue text-sm hover:underline pl-4" href="{{ url($page->slug) }}">View Page</a>
 	</div>
 	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right hover:underline text-sm">&laquo; Back to all</a>
 @endsection
@@ -30,10 +30,7 @@
 		</div>
 
 		<div class="mb-4">			
-			<label for="content" class="label">Page Content</label>
-			<textarea class="input" id="page-content-{{ $page->id }}" 
-				name="content" 
-				placeholder="Enter your content">{{ old('content', $page->getOriginal('content')) }}</textarea>
+			<markdown-editor name="content" :content="{{ old('content', $page->jsonContent) }}"></markdown-editor>
 		</div>
 
 		{{ csrf_field() }}
@@ -43,5 +40,3 @@
 		</button>
 	</form>
 @endsection
-
-@include('simplemde')

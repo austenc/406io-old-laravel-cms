@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('title')
-	<h1 class="flex-1 py-6 font-normal text-xl text-grey-dark">Dashboard</h1>
-	<a class="flex-none btn bg-blue hover:bg-blue-darker" href="{{ route('pages.create') }}">Create New Page</a>	
+	<h1 class="flex-1 py-4 font-normal text-xl text-grey-dark">Dashboard</h1>
+	<a class="flex-none btn bg-teal hover:bg-teal-dark" href="{{ route('pages.create') }}">Create New Page</a>	
 @endsection
 @section('content')
 	@if ($pages->isEmpty())
