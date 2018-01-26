@@ -35,19 +35,8 @@
 
 			<!-- Editor -->
 			<div class="flex-1">
-				<textarea ref="editor"
-					@keydown.66="bold"
-					@keydown.73="italic"
-					@keydown.75="link"
-					@keydown.enter="saveOnEnter"
-					@keydown.shift.70="fullscreenShortcut"
-					@keydown.shift.76="unorderedList"
-					:name="name"
-					:value="input"
-					@input="update"
-					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none">
-					Type stuff
-				</textarea>
+				<div ref="editor" @input="update" :name="name" content="input" contenteditable="true" class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none bg-white overflow-y-scroll">
+				</div>		
 			</div>
 
 			<!-- Preview -->

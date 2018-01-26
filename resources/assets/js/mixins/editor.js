@@ -23,7 +23,7 @@ export default {
 
     methods: {
         update: _.debounce(function (e) {
-            this.input = e.target.value;
+            this.input = e.target.innerHTML.replace(/<br>/g, '\n');
         }, 100),
 
         isLink(start, end) {
@@ -124,6 +124,7 @@ export default {
     },
     mounted() {
         this.input = this.content;
+        this.$refs.editor.innerHTML = this.input.replace(/\n/g, '<br>');
 
         // Markdown parsing with marked
         this.renderer = new marked.Renderer();

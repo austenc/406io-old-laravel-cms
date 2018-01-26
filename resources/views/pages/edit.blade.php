@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="mb-4">			
-			<markdown-editor name="content" :content="{{ old('content', $page->jsonContent) }}"></markdown-editor>
+			<markdown-editor name="content" :content="{{ htmlspecialchars(old('content', $page->jsonContent)) }}"></markdown-editor>
 		</div>
 
 		{{ csrf_field() }}
