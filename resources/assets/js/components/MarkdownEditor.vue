@@ -35,7 +35,9 @@
 
 			<!-- Editor -->
 			<div class="flex-1">
-				<textarea ref="editor"
+				<div id="ace-editor"></div>
+
+				<textarea style="display: none;" ref="editor"
 					@keydown.66="bold"
 					@keydown.73="italic"
 					@keydown.75="link"
@@ -64,6 +66,10 @@
 	import Toolbar from '../mixins/toolbar';
 	import Fullscreen from '../mixins/fullscreen';
 
+	import * as ace from 'brace';
+	import 'brace/mode/markdown';
+	import 'brace/theme/tomorrow_night_eighties';
+
 	export default {
 		components: {
 			FontAwesomeIcon
@@ -73,6 +79,12 @@
 </script>
 
 <style>
+	#ace-editor {
+		padding-top: 1rem;
+		position: relative;
+		width: 100%;
+		height: 700px;
+	}
 	.outline-none, .outline-none:focus {
 		outline: none;
 	}

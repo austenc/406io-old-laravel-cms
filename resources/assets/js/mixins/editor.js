@@ -9,6 +9,7 @@ export default {
 
     data() {
         return {
+            editor: false,
             input: 'Enter text here',
             renderer: false,
             prevSelection: '',
@@ -133,6 +134,16 @@ export default {
             + hljs.highlightAuto(code).value 
             + '</code></pre>';
         };
+
+        // Setup the ace editor
+        this.editor = ace.edit('ace-editor');
+        this.editor.getSession().setMode('ace/mode/markdown');
+        this.editor.getSession().setUseWrapMode(true);
+        this.editor.setTheme('ace/theme/tomorrow_night_eighties');
+        this.editor.setValue(this.input);
+        this.editor.renderer.setShowGutter(false);
+        this.editor.clearSelection();
+        this.editor.renderer.setScrollMargin(10, 10);
     }
 
 }
