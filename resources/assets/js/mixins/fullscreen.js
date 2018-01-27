@@ -29,6 +29,7 @@ export default {
         closeOnEscape(evt) {
             if (evt.keyCode === 27 && this.fullscreen) {
                 this.fullscreen = false;
+                this.toggleBodyClass();
             }
         },
         toggleBodyClass() {
