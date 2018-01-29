@@ -1,18 +1,15 @@
 <template>
 	<div class="shadow flex flex-grow flex-col border border-grey-light" :class="fullscreenClass" style="min-height: 300px;">
-		<div class="flex justify-between bg-grey-lighter text-grey p-2 border-b border-grey-light pt-3 px-4">
+		<div v-show="showToolbar" class="flex justify-between bg-grey-lighter text-grey p-2 border-b border-grey-light pt-3 px-4">
 			<div>
-				<button @click.prevent="insert('**', '**')" :title="'Bold (' + superKey + ' + B)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+				<button @click.prevent="wrapTags('**', '**')" :title="'Bold (' + superKey + ' + B)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
 					<font-awesome-icon icon="bold" />
 				</button>
-				<button @click.prevent="insert('*', '*')" :title="'Italic (' + superKey + ' + I)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+				<button @click.prevent="wrapTags('*', '*')" :title="'Italic (' + superKey + ' + I)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
 					<font-awesome-icon icon="italic" />
 				</button>
-				<button @click.prevent="insert('[', '](http://)')" :title="'Insert Link (' + superKey + ' + K)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+				<button @click.prevent="wrapTags('[', '](http://)')" :title="'Insert Link (' + superKey + ' + K)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
 					<font-awesome-icon icon="link"/>
-				</button>
-				<button @click.prevent="insert('- ', '')" :title="'Unordered List (' + superKey + ' + Shift + L)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
-					<font-awesome-icon icon="list"/>
 				</button>
 			</div>
 			<div class="text-right">		
@@ -36,7 +33,11 @@
 			<!-- Editor -->
 			<div class="flex-1">
 				<div id="ace-editor" ref="editor" @input="update"
-
+					@keydown.66="bold"
+					@keydown.73="italic"
+					@keydown.75="link"
+					@keydown.enter="saveOnEnter"
+					@keydown.shift.70="fullscreenShortcut"
 					></div>
 
 				<textarea ref="textarea" style="display: none;"
@@ -59,7 +60,6 @@
 	import Editor from '../mixins/editor';
 	import Toolbar from '../mixins/toolbar';
 	import Fullscreen from '../mixins/fullscreen';
-
 	import * as ace from 'brace';
 	import 'brace/mode/markdown';
 	import 'brace/theme/tomorrow_night_eighties';

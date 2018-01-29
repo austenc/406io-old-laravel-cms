@@ -1,3 +1,6 @@
+import * as ace from 'brace';
+var Range = new ace.acequire('ace/range').Range;
+
 // A few helper methods first
 function isMac() {
     var platform = window.navigator.platform,
@@ -30,52 +33,65 @@ export default {
             if ((isMac() && e.metaKey) || e.ctrlKey) {
                 e.preventDefault();
                 this.$refs.editor.form.submit();
-            } else {
-                this.autoAddListItem(e)
+            } 
+        },
+
+        alreadyWrappedWith(selection, before, after) {
+            var rangeBefore = new Range(
+                selection.start.row, selection.start.column - before.length, 
+                selection.end.row, selection.start.column
+            );
+            var rangeAfter = new Range(
+                selection.end.row, selection.end.column,
+                selection.end.row, selection.end.column + after.length
+            );
+            var charsBefore = this.editor.session.getTextRange(rangeBefore);
+            var charsAfter = this.editor.session.getTextRange(rangeAfter);
+
+            // Are the before/after tags already wrapping our selection?
+            if (charsBefore == before && charsAfter == after) {
+                // We should remove the before and after (toggling off)
+                this.editor.session.replace(rangeAfter, '');
+                this.editor.session.replace(rangeBefore, '');
+                this.editor.focus();
+                this.dispatchInputEvent();
+
+                return true;
             }
+
+            return false;
         },
 
-        autoAddListItem(e) {
-            var editor = this.$refs.editor;            
-            var selStart = editor.selectionStart;
-            var lineNumber = editor.value.substr(0, selStart).split('\n').length;
-            var line = editor.value.split('\n')[lineNumber - 1];
-            var firstTwoChars = line.substring(0, 2);;
+        wrapTags(before, after) {
 
-            // if this is a list item already, add a new one on the next line
-            if (firstTwoChars == '- ') {
-                e.preventDefault();
-                if (line.length == 2) {
-                    // remove current line
-                    editor.value = editor.value.substring(0, selStart - 2) 
-                        + editor.value.substring(selStart, editor.value.length);
-                    editor.focus();
-                    editor.selectionEnd = selStart - 2;
-                } else {
-                    document.execCommand("insertText", false, "\n" + '- ');
-                }
-            }     
+            var selection = this.editor.getSelectionRange();
+            
+            // Toggle it off if this is already wrapped
+            if (this.alreadyWrappedWith(selection, before, after)) {
+                return true;
+            }
 
-            this.$refs.editor.dispatchEvent(new Event('input', {
-                'bubbles': true,
-                'cancelable': true
-            }));    
+            // Otherwise, add before/after tags wrapping the selection
+            this.editor.session.replace(selection, 
+                before + this.editor.session.getTextRange(selection) + after
+            );   
+            selection.start.column += before.length;
+            selection.end.column += before.length;
+            this.editor.selection.setRange(selection);
+            this.editor.focus()   
+            this.dispatchInputEvent();        
         },
 
-        bold: cmdOrCtrl(function() {                
-            this.insert('**', '**');
+        bold: cmdOrCtrl(function() {
+            this.wrapTags('**', '**');
         }),
 
         italic: cmdOrCtrl(function() {              
-            this.insert('*', '*');
+            this.wrapTags('*', '*');
         }),
 
         link: cmdOrCtrl(function() {
-            this.insert('[', '](http://)');
-        }),
-
-        unorderedList: cmdOrCtrl(function() {
-            this.insert('- ', '');
+            this.wrapTags('[', '](http://)');
         }),
     }
 }
