@@ -5,7 +5,30 @@ var marked = require('marked');
 // Editor mixin
 export default {
 
-    props: ['name', 'content'],
+    props: {
+        name: String,
+        content: String,
+        wrap: {
+            type: Boolean,
+            default: true
+        },
+        theme: {
+            type: String,
+            default: 'ace/theme/tomorrow_night_eighties'
+        },
+        gutter: {
+            type: Boolean,
+            default: false
+        },
+        padding: {
+            type: Number,
+            default: 20
+        },
+        lineHeight: {
+            type: Number,
+            default: 2
+        }
+    },
 
     data() {
         return {
@@ -24,7 +47,7 @@ export default {
 
     methods: {
         update: _.debounce(function (e) {
-            this.input = e.target.value;
+            this.input = this.editor.getValue();
         }, 100),
 
         isLink(start, end) {
@@ -122,28 +145,36 @@ export default {
             }));
         },
 
+        setupEditor() {
+            var self = this;
+            this.editor = ace.edit('ace-editor');
+            this.editor.getSession().setMode('ace/mode/markdown');
+            this.editor.getSession().setUseWrapMode(this.wrap);
+            this.editor.getSession().setScrollTop(0);
+            this.editor.setTheme(this.theme);
+            this.editor.renderer.setShowGutter(this.gutter);
+            this.editor.renderer.setPadding(this.padding);
+            // this.editor.renderer.setScrollMargin(this.padding, this.padding);
+            this.editor.container.style.lineHeight = this.lineHeight;
+            this.editor.setValue(this.input, -1);
+            this.editor.getSession().on('changeScrollTop', function(scroll) {
+                self.$refs.preview.scrollTop = parseInt(scroll) || 0;
+            });
+        }
+
     },
     mounted() {
         this.input = this.content;
 
         // Markdown parsing with marked
         this.renderer = new marked.Renderer();
-
         this.renderer.code = function(code, language){
             return '<pre><code class="hljs">' 
             + hljs.highlightAuto(code).value 
             + '</code></pre>';
         };
 
-        // Setup the ace editor
-        this.editor = ace.edit('ace-editor');
-        this.editor.getSession().setMode('ace/mode/markdown');
-        this.editor.getSession().setUseWrapMode(true);
-        this.editor.setTheme('ace/theme/tomorrow_night_eighties');
-        this.editor.setValue(this.input);
-        this.editor.renderer.setShowGutter(false);
-        this.editor.clearSelection();
-        this.editor.renderer.setScrollMargin(10, 10);
+        this.setupEditor()
     }
 
 }

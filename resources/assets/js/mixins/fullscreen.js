@@ -53,15 +53,5 @@ export default {
 
         // Set up the reference to the body tag
         this.body = document.getElementsByTagName('body')[0];
-
-        // Synchronize scrolling between preview and editor
-        var self = this;
-        this.$refs.editor.addEventListener('scroll', function() {
-            self.$refs.preview.scrollTop = self.$refs.editor.scrollTop;
-        });
-        this.$refs.preview.addEventListener('scroll', function() {
-            self.$refs.editor.scrollTop = self.$refs.preview.scrollTop;
-        });
-
     }
 }

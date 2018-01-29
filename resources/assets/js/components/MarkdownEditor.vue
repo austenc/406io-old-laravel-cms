@@ -35,20 +35,14 @@
 
 			<!-- Editor -->
 			<div class="flex-1">
-				<div id="ace-editor"></div>
+				<div id="ace-editor" ref="editor" @input="update"
 
-				<textarea style="display: none;" ref="editor"
-					@keydown.66="bold"
-					@keydown.73="italic"
-					@keydown.75="link"
-					@keydown.enter="saveOnEnter"
-					@keydown.shift.70="fullscreenShortcut"
-					@keydown.shift.76="unorderedList"
+					></div>
+
+				<textarea ref="textarea" style="display: none;"
 					:name="name"
-					:value="input"
-					@input="update"
+					v-model="input"
 					class="font-mono text-sm appearance-none w-full text-grey-darker outline-none border-teal p-4 h-full rounded-none shadow-none">
-					Type stuff
 				</textarea>
 			</div>
 
@@ -78,12 +72,16 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
+	$height: 84vh;
+
 	#ace-editor {
 		padding-top: 1rem;
 		position: relative;
 		width: 100%;
-		height: 700px;
+	}
+	#ace-editor, .editor-preview {
+		height: $height;
 	}
 	.outline-none, .outline-none:focus {
 		outline: none;
@@ -95,9 +93,13 @@
 
 	.editor-fullscreen {
 		top: 41px;
+
+		#ace-editor, .editor-preview {
+			height: 100%;			
+		}
 	}
 
-	.preview-fullscreen, .editor-fullscreen textarea {
+	.preview-fullscreen {
 		padding-bottom: 100px;
 	}
 </style>
