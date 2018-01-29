@@ -1,5 +1,12 @@
 export default {
 
+    props: {
+        showPreview: {
+            type: Boolean,
+            default: true
+        }
+    },
+
     data() {
         return {
             fullscreen: false,
@@ -48,6 +55,9 @@ export default {
     },
 
     mounted() {
+        // Setup our initial split state based on the showPreview prop
+        this.split = this.showPreview;
+
         // Close fullscreen on ESC key press
         document.addEventListener('keyup', this.closeOnEscape);
 

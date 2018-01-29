@@ -31,7 +31,7 @@ export default {
         showToolbar: {
             type: Boolean,
             default: true
-        }
+        },
     },
 
     data() {
