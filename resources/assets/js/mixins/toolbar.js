@@ -62,9 +62,57 @@ export default {
             return false;
         },
 
+        multiLineCode(selection) {
+            var rangeBefore = new Range(
+                selection.start.row - 1, 0, 
+                selection.start.row - 1, 3
+            );
+            var rangeAfter = new Range(
+                selection.end.row + 1, 0, 
+                selection.end.row + 1, 3
+            );
+            var charsBefore = this.editor.session.getTextRange(rangeBefore);
+            var charsAfter = this.editor.session.getTextRange(rangeAfter);
+
+            // Already wrapped in ``` ?
+            if (charsBefore == '```' && charsAfter == '```') {
+                this.editor.session.replace(rangeAfter, '');
+                this.editor.session.replace(rangeBefore, '');
+
+                // TODO: Fix newlines being added when toggling on / off
+                // this.editor.session.replace(new Range(
+                //     rangeAfter.end.row, 0,
+                //     rangeAfter.end.row + 1, 0
+                // ), '');
+                // this.editor.session.replace(new Range(
+                //     rangeBefore.end.row, 0,
+                //     rangeBefore.end.row + 1, 1
+                // ), '');
+                this.editor.focus();
+                return true;
+            }
+
+            // Otherwise, wrap in ```
+            this.editor.session.replace(selection, 
+                '```\n' + this.editor.session.getTextRange(selection) + '\n```\n'
+            );
+
+            // Set selection to contents of multiline
+            this.editor.selection.setRange(new Range(
+                selection.start.row + 1, selection.start.column,
+                selection.end.row + 1, selection.end.column,
+            ));
+
+            this.editor.focus();
+        },
+
         wrapTags(before, after) {
 
             var selection = this.editor.getSelectionRange();
+            if (before == '`' && after == '`' && selection.isMultiLine()) {
+                this.multiLineCode(selection);
+                return true;
+            }
             
             // Toggle it off if this is already wrapped
             if (this.alreadyWrappedWith(selection, before, after)) {

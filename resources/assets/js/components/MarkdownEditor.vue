@@ -11,6 +11,9 @@
 				<button @click.prevent="wrapTags('[', '](http://)')" :title="'Insert Link (' + superKey + ' + K)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
 					<font-awesome-icon icon="link"/>
 				</button>
+				<button @click.prevent="wrapTags('`', '`')" :title="'Code (' + superKey + ' + ZZZ)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
+					<font-awesome-icon icon="code"/>
+				</button>
 			</div>
 			<div class="text-right">		
 				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark mr-1">
