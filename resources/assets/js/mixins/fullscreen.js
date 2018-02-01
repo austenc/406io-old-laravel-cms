@@ -41,6 +41,11 @@ export default {
             this.previewOnly = false;
             this.split = !this.split;
             this.editor.focus();
+
+            // Trick the editor into thinking the window resized
+            setTimeout(function() {
+                window.dispatchEvent(new Event('resize'));
+            }, 250)
         },
         togglePreview() {
             this.previewOnly = !this.previewOnly;
