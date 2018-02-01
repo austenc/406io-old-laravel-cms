@@ -9,6 +9,7 @@ export default {
 
     data() {
         return {
+            previewOnly: false,
             fullscreen: false,
             split: true
         }
@@ -21,17 +22,28 @@ export default {
         editorClass() {
             return this.fullscreen ? 'flex fixed pin-l pin-t w-full h-screen overflow-hidden editor-fullscreen' : 'flex flex-grow flex-row';
         },
+        previewClass() {
+            var baseClass = 'hidden md:block';
+            if (this.fullscreen) {
+                baseClass += ' preview-fullscreen';
+            }
+            return this.previewOnly ? 'mobile-preview' : baseClass;
+        }
     }, 
 
     methods:  {
         toggleFullscreen() {
             this.fullscreen = !this.fullscreen;
-            this.$refs.editor.focus();
+            this.editor.focus();
             this.toggleBodyClass();
         }, 
         toggleSplit() {
+            this.previewOnly = false;
             this.split = !this.split;
-            this.$refs.editor.focus();
+            this.editor.focus();
+        },
+        togglePreview() {
+            this.previewOnly = !this.previewOnly;
         },
         closeOnEscape(evt) {
             if (evt.keyCode === 27 && this.fullscreen) {

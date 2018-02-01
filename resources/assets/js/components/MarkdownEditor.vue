@@ -16,7 +16,13 @@
 				</button>
 			</div>
 			<div class="text-right">		
-				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark mr-1">
+				<!-- Preview Only -->
+				<button @click.prevent="togglePreview" title="Preview Only" class="w-4 w-4 outline-none text-grey hover:text-grey-dark mr-1">
+					<font-awesome-icon icon="eye"></font-awesome-icon>
+				</button>
+
+				<!-- Split Screen -->
+				<button @click.prevent="toggleSplit" :title="split ? 'Hide Preview' : 'Show Preview'" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark mr-1 hidden md:inline">
 
 					<!-- Single / Split Pane Icons -->
 					<font-awesome-icon :icon="['far', 'window-maximize']" v-show="split"></font-awesome-icon>
@@ -34,7 +40,7 @@
 		<div :class="editorClass">
 
 			<!-- Editor -->
-			<div class="flex-1">
+			<div class="flex-1" v-show="!previewOnly">
 				<div id="ace-editor" ref="editor" @input="update"
 					@keydown.66="bold"
 					@keydown.73="italic"
@@ -50,8 +56,9 @@
 				</textarea>
 			</div>
 
-			<!-- Preview -->
-			<div v-show="split" ref="preview" :class="{'preview-fullscreen': fullscreen}" class="editor-preview flex-1 bg-white rounded-none border-l border-grey-lighter overflow-y-scroll">
+			<!-- Split Preview -->
+			<div v-show="split || previewOnly" ref="preview" class="editor-preview flex-1 bg-white rounded-none border-l border-grey-lighter overflow-y-scroll"
+				:class="previewClass">
 				<div class="p-4 px-6" v-html="output"></div>
 			</div>
 		</div>
