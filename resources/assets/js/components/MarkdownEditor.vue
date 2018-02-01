@@ -29,7 +29,7 @@
 					<font-awesome-icon icon="columns" v-show="!split"></font-awesome-icon>
 				</button>
 
-				<button @click.prevent="toggleFullscreen" title="Fullscreen" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark">
+				<button @click.prevent="toggleFullscreen" title="Fullscreen (Alt + Shift + F)" class="w-4 h-4 outline-none text-right text-grey hover:text-grey-dark">
 					<!-- Fullscreen icon -->
 					<font-awesome-icon icon="expand-arrows-alt" v-show="!fullscreen" />
 					<!-- Close Icon -->
@@ -42,11 +42,11 @@
 			<!-- Editor -->
 			<div class="flex-1" v-show="!previewOnly">
 				<div id="ace-editor" ref="editor" @input="update"
-					@keydown.66="bold"
-					@keydown.73="italic"
-					@keydown.75="link"
+					@keydown.66.prevent="bold"
+					@keydown.73.prevent="italic"
+					@keydown.75.prevent="link"
 					@keydown.enter="saveOnEnter"
-					@keydown.shift.70="fullscreenShortcut"
+					@keydown.alt.shift.70.prevent="toggleFullscreen"
 					></div>
 
 				<textarea ref="textarea" style="display: none;"

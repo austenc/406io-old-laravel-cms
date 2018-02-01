@@ -25,10 +25,6 @@ export default {
     },
 
     methods: {
-        fullscreenShortcut: cmdOrCtrl(function() {
-            this.toggleFullscreen();
-        }),
-
         saveOnEnter(e) {
             if ((isMac() && e.metaKey) || e.ctrlKey) {
                 e.preventDefault();
