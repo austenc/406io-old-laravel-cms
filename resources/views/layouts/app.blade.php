@@ -78,11 +78,11 @@
         </strong>
         <div class="text-xl mb-4">
             <div class="fa-2x">
-                <a href="https://twitch.tv/406io" class="fa-layers fa-fw text-white twitch-icon">
+                <a href="https://twitch.tv/austencam" class="fa-layers fa-fw text-white twitch-icon">
                     <i class="fas fa-circle"></i>
                     <i class="fab fa-twitch" data-fa-transform="shrink-6"></i>
                 </a>
-                <a href="https://twitter.com/406io" class="fa-layers fa-fw text-white twitter-icon">
+                <a href="https://twitter.com/austencam" class="fa-layers fa-fw text-white twitter-icon">
                     <i class="fas fa-circle"></i>
                     <i class="fab fa-twitter" data-fa-transform="shrink-6"></i>
                 </a>
