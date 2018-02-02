@@ -27,7 +27,7 @@ export default {
             if (this.fullscreen) {
                 baseClass += ' preview-fullscreen';
             }
-            return this.previewOnly ? 'mobile-preview' : baseClass;
+            return this.previewOnly ? 'mobile-preview w-full' : baseClass;
         }
     }, 
 
