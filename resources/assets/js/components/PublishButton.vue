@@ -2,7 +2,7 @@
     <button type="submit" 
         :name="buttonName"
         @click.prevent="togglePublish"
-        class="ml-4 py-1 text-xs pt-2 px-2 bg-purple hover:bg-purple-dark rounded text-white">
+        class="ml-4 py-1 pt-2 px-2 bg-purple hover:bg-purple-dark rounded text-white">
             <span v-if="isPublished">Unpublish</span>
             <span v-else>Publish</span>
     </button>

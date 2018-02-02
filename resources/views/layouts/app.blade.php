@@ -61,9 +61,7 @@
                 @show
             </div>
             
-            <div class="container mx-auto w-3/4 pb-8 pt-2 px-2">
-                @yield('content')
-            </div>
+            @yield('content')
         
             <vue-toast ref="toast"></vue-toast>
         </div>

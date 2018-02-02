@@ -1,12 +1,4 @@
 @extends('layouts.app')
-@section('title')
-	<div class="flex-1">
-		<h1 class="inline-block page-title">Edit Page</h1>
-		<publish-button page="{{ $page->slug }}" published="{{ !empty($page->published_at) }}"></publish-button>
-		<a class="text-blue text-sm hover:underline pl-4" href="{{ url($page->slug) }}">View Page</a>
-	</div>
-	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right hover:underline text-sm">&laquo; Back to all</a>
-@endsection
 @section('content')
 	@if (session('status'))
 		<div class="p-3 my-4 rounded bg-green-light text-white">
@@ -14,29 +6,46 @@
 		</div>		
 	@endif
 	<form method="POST" action="{{ route('pages.update', $page) }}">
-		<div class="mb-4">
-			<label for="title" class="label">Title</label>
-			@include('forms.input', ['name' => 'title', 'value' => old('title', $page->title)])
-		</div>
 
-		<div class="mb-4">
-			<label for="slug" class="label">Slug</label>
-			@include('forms.input', ['name' => 'slug', 'value' => old('slug', $page->slug)])
+		{{-- Page Bar --}}
+		<div class="page-bar">
+			<div class="flex-1 pt-2">
+				@include('forms.input', [
+					'name' => 'title', 
+					'value' => old('title', $page->title),
+					'class' => 'input mb-1 input-focus py-1'
+				])
+				<div class="flex justify-start">
+					<div class="text-sm pl-1 pt-1">/</div>
+					<div class="flex-1 ">
+						@include('forms.input', [
+							'name' => 'slug', 
+							'value' => old('slug', $page->slug), 
+							'class' => 'slug'
+						])
+					</div>
+				</div>
+			</div>
+			<div class="text-right text-xs">
+				<a class="text-sm hover:text-grey-lightest pl-4 text-grey" href="{{ url($page->slug) }}">
+					<i class="fa fa-search"></i>
+				</a>
+				<publish-button page="{{ $page->slug }}" published="{{ !empty($page->published_at) }}"></publish-button>
+				<button type="submit" name="update" class="ml-2 py-1 pt-2 px-2 bg-blue rounded text-white hover:bg-blue-dark">
+					Update
+				</button>
+			</div>
 		</div>
-
-		<div class="mb-4">
+{{-- 		<div class="mb-4">
 			<label for="excerpt" class="label">Excerpt</label>
 			@include('forms.input', ['name' => 'excerpt', 'value' => old('excerpt', $page->getOriginal('excerpt'))])
 		</div>
-
+ --}}
 		<div class="mb-4">			
 			<markdown-editor name="content" :content="{{ old('content', $page->jsonContent) }}"></markdown-editor>
 		</div>
 
 		{{ csrf_field() }}
 		{{ method_field('PUT') }}
-		<button type="submit" name="update" class="py-2 px-4 bg-blue rounded text-white">
-			Update Page
-		</button>
 	</form>
 @endsection

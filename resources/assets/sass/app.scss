@@ -58,6 +58,19 @@ a {
 	}
 }
 
+.input-focus {
+	@apply .text-grey-lighter .bg-transparent .border-none .shadow-none;
+
+	&:focus {
+		@apply .bg-white .text-grey-darker;
+	}
+}
+
+.slug {
+	@apply .rounded .text-xs .mb-2 .px-1 .w-full .inline-block;
+	@extend .input-focus;
+}
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
@@ -121,11 +134,15 @@ h3, h4 {
 }
 
 .navbar-admin {
-	@apply .flex .items-center .justify-between .flex-wrap .bg-orange-dark .px-4 .py-1;
+	@apply .flex .items-center .bg-blue .justify-between .flex-wrap .px-4 .py-1;
+}
+
+.page-bar {
+	@apply .flex .flex-row .items-center .px-2 .text-white .bg-grey-darker;
 }
 
 .admin-title-bar {
-	@apply .text-xs .flex .items-center .justify-between .flex-wrap .bg-grey-light .px-6 .border-t;
+	@apply .flex .flex-row .items-center .bg-grey-light .px-2;
 
 	h1 {
 		@apply .text-base;

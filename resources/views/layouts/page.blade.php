@@ -9,3 +9,9 @@
     </div>
 </div>
 @endsection
+
+@section('content')
+    <div class="container mx-auto w-3/4 pb-8 pt-2 px-2">
+    	@yield('content')
+    </div>
+@endsection
