@@ -1,5 +1,5 @@
 <template>
-    <button type="submit" 
+    <button type="button" 
         :name="buttonName"
         @click.prevent="togglePublish"
         class="ml-4 py-1 pt-2 px-2 bg-purple hover:bg-purple-dark rounded text-white">

@@ -1,11 +1,16 @@
 @extends('layouts.app')
+
+@section('bodytag')
+	<body class="overflow-hidden pb-6">
+@endsection
+
 @section('content')
 	@if (session('status'))
 		<div class="p-3 my-4 rounded bg-green-light text-white">
 			Page {{ session('status') }} successfully.
 		</div>		
 	@endif
-	<form method="POST" action="{{ route('pages.update', $page) }}">
+	<form method="POST" action="{{ route('pages.update', $page) }}" class="h-full">
 
 		{{-- Page Bar --}}
 		<div class="page-bar">
@@ -41,7 +46,7 @@
 			@include('forms.input', ['name' => 'excerpt', 'value' => old('excerpt', $page->getOriginal('excerpt'))])
 		</div>
  --}}
-		<div class="mb-4">			
+		<div class="bg-white h-full flex flex-col flex-grow">	
 			<markdown-editor name="content" :content="{{ old('content', $page->jsonContent) }}"></markdown-editor>
 		</div>
 

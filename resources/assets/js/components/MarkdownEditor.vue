@@ -1,5 +1,5 @@
 <template>
-	<div class="shadow flex flex-grow flex-col border border-grey-light" :class="fullscreenClass" style="min-height: 300px;">
+	<div class="shadow flex flex-grow flex-col" :class="fullscreenClass">
 		<div v-show="showToolbar" class="flex justify-between bg-grey-lighter text-grey p-2 border-b border-grey-light pt-3 px-4">
 			<div>
 				<button @click.prevent="wrapTags('**', '**')" :title="'Bold (' + superKey + ' + B)'" class="outline-none  h-4 w-4 text-grey hover:text-grey-dark">
@@ -40,7 +40,7 @@
 		<div :class="editorClass">
 
 			<!-- Editor -->
-			<div class="flex-1" v-show="!previewOnly">
+			<div class="flex-1 max-h-screen" v-show="!previewOnly">
 				<div id="ace-editor" ref="editor" @input="update"
 					@keydown.66.prevent="bold"
 					@keydown.73.prevent="italic"
@@ -57,7 +57,7 @@
 			</div>
 
 			<!-- Split Preview -->
-			<div v-show="split || previewOnly" ref="preview" class="editor-preview flex-1 bg-white rounded-none border-l border-grey-lighter overflow-y-scroll"
+			<div v-show="split || previewOnly" ref="preview" class="editor-preview bg-white rounded-none w-1/2 overflow-y-scroll max-h-screen"
 				:class="previewClass">
 				<div class="p-4 px-6" v-html="output"></div>
 			</div>
@@ -83,7 +83,8 @@
 </script>
 
 <style lang="scss">
-	$height: 84vh;
+	// $height: 84vh;
+	$height: 100%;
 
 	#ace-editor {
 		padding-top: 1rem;
@@ -102,7 +103,7 @@
 	}
 
 	.editor-fullscreen {
-		top: 41px;
+		top: 40px;
 
 		#ace-editor, .editor-preview {
 			height: 100%;			

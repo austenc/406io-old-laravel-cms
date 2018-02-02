@@ -76,7 +76,7 @@ export default {
             this.editor.getSession().on('changeScrollTop', function(scroll) {
                 self.$refs.preview.scrollTop = parseInt(scroll) || 0;
             });
-            this.editor.getSession().setUndoManager(new ace.UndoManager())
+            this.editor.getSession().setUndoManager(new ace.UndoManager());
         }
 
     },
