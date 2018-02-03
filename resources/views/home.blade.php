@@ -8,13 +8,13 @@
  		<div class="mb-2">&nbsp;</div>
 		{{-- List Recent Pages --}}
 		@foreach ($pages as $page)
+		<a class="font-heading text-orange-dark hover:text-orange-darker font-bold text-2xl lg:text-3xl text-left block" href="{{ $page->url }}">
+			{{ $page->title }}
+		</a>
 		<div class="text-center text-lg card mb-8 pb-2 text-grey-dark">
-			<a class="text-blue font-bold text-2xl text-left block" href="{{ $page->url }}">
-				{{ $page->title }}
-			</a>
 			<p class="mb-8 mt-4">
 				{{ strip_tags($page->excerpt) }} <br>
-				<a href="{{ $page->url }}" class="text-sm btn bg-blue inline-block mt-4 hover:bg-blue-darker">Read More</a>
+				<a href="{{ $page->url }}" class="text-sm btn bg-blue-dark hover:bg-blue-darker inline-block mt-4 hover:bg-blue-darker">Read More</a>
 			</p>
 		</div>
 		@endforeach
