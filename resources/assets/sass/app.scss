@@ -79,16 +79,12 @@ a {
 
 // Bring in the font
 @import url("https://fonts.googleapis.com/css?family=Rationale|Source+Code+Pro|Avenir:200,300,400,600,700");
-
 @import url('../../../node_modules/highlight.js/styles/agate.css');
-@import url('../../../node_modules/vue-toast/dist/vue-toast.min.css');
 
 // ====
 body {
     font-family: 'Avenir', sans-serif;
     @apply .bg-grey-lighter;
-    background: #FAF6F2 url('/img/bg.jpg') 0 175px fixed no-repeat;
-    background-size: cover;
 }
 
 html, body {
@@ -101,30 +97,6 @@ h3, h4 {
 
 .font-heading {
 	font-family: 'Rationale', 'Source Code Pro', sans-serif;
-}
-
-.twitch-icon {
-	.fa-circle {
-		color: #6441A4;		
-	}
-	&:hover {
-		color: #6441A4;
-		.fa-circle {
-			@apply .text-white;
-		}
-	}
-}
-
-.twitter-icon {
-	.fa-circle {
-		color: #1DA1F2;		
-	}
-	&:hover {
-		color: #1DA1F2;
-		.fa-circle {
-			@apply .text-white;
-		}
-	}
 }
 
 .wrap {
@@ -145,12 +117,6 @@ h3, h4 {
 	h1 {
 		@apply .text-base;
 	}
-}
-
-.footer {
-	@apply .mx-auto .w-full .px-4 .text-center .text-sm .text-grey-darker .pb-6;
-	padding-top: 120px;
-	padding-bottom: 32px;
 }
 
 .editor-preview pre, .editor-preview-side pre {
@@ -204,28 +170,6 @@ li {
 	}
 }
 
-// Set z-index specifically so toasts aren't behind simpleMDE
-.vue-toast-manager_container {
-	@apply .z-10;
-}
-
-.vue-toast_container {	
-	&._info .vue-toast_message {
-		@apply .bg-blue-light;
-	}
-	&._success .vue-toast_message {
-		@apply .bg-teal-dark;
-	}
-	&._warning .vue-toast_message {
-		@apply .bg-orange;
-	}
-	&._errpr .vue-toast_message {
-		@apply .bg-red-light;
-	}
-}
-
-.vue-toast_message {
-	@apply .rounded .px-3;
-}
-
 @import 'tables';
+@import 'footer';
+@import 'toasts';

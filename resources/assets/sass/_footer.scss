@@ -1,0 +1,31 @@
+.footer {
+    @apply .mx-auto .w-full .px-4 .text-center .text-sm .text-grey-dark .pb-6;
+    padding-top: 60px;
+    padding-bottom: 160px;
+    background: transparent url('/img/footer.png') bottom center no-repeat;
+    background-size: contain;
+}
+
+.twitch-icon {
+    .fa-circle {
+        color: #6441A4;     
+    }
+    &:hover {
+        color: #6441A4;
+        .fa-circle {
+            @apply .text-white;
+        }
+    }
+}
+
+.twitter-icon {
+    .fa-circle {
+        color: #1DA1F2;     
+    }
+    &:hover {
+        color: #1DA1F2;
+        .fa-circle {
+            @apply .text-white;
+        }
+    }
+}
