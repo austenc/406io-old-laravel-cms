@@ -8,7 +8,7 @@
 	<a href="{{ url('/') }}" class="block text-center text-sm my-4">
 		&laquo; Back to All Posts
 	</a>
-	<div class="text-lg text-grey-darker leading-normal w-4/5 mx-auto">
+	<div class="container mx-auto text-lg text-grey-darker leading-normal w-3/4 md:w-2/3 mx-auto">
 		{!! $page->content !!}
 	</div>
 @endsection

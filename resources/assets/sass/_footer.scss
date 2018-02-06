@@ -1,7 +1,7 @@
 .footer {
     @apply .mx-auto .w-full .px-4 .text-center .text-sm .text-grey-dark .pb-6;
-    padding-top: 60px;
-    padding-bottom: 160px;
+    padding-top: 40px;
+    padding-bottom: 200px;
     background: transparent url('/img/footer.png') bottom center no-repeat;
     background-size: contain;
 }
@@ -24,6 +24,19 @@
     }
     &:hover {
         color: #1DA1F2;
+        .fa-circle {
+            @apply .text-white;
+        }
+    }
+}
+
+.github-icon {
+    .fa-circle {
+        color: black;
+    }
+
+    &:hover {
+        color: black;
         .fa-circle {
             @apply .text-white;
         }

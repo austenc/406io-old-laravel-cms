@@ -1,7 +1,14 @@
 @extends('layouts.page')
 
+@section ('nav')
+@endsection
+
 @section('content')
 	<div class="w-3/4 mx-auto leading-normal">
+		<div class="pt-8">
+			<img src="https://avatars1.githubusercontent.com/u/575421" class="rounded-full w-32 h-32 block mx-auto">
+			<h2 class="block mx-auto text-center text-grey-dark text-3xl font-heading mt-2">Austen Cameron</h2>
+		</div>
 {{-- 		<h1 class="text-center text-grey-darker mb-8">Welcome</h1>
 		<p class="my-8 text-center text-grey-dark">This is the story of building a new website. Here are the latest posts:</p>
  --}}		

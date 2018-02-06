@@ -46,15 +46,13 @@ a {
 }
 
 .logo {
-	color: #8c9da5;
-	font-family: 'Rationale', sans-serif;
-	display: inline-block;
+	@extend .font-heading;
+	@apply .inline-block .text-3xl .text-grey-dark;
 	cursor: pointer;
-	font-size: 2rem;
 
 	img {
-		vertical-align: bottom;
-		max-width: 40px;		
+		vertical-align: middle;
+		@apply .w-16 .h-16 .rounded-full .mr-3 .shadow;
 	}
 }
 
