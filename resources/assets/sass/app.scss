@@ -76,7 +76,8 @@ a {
 @tailwind utilities;
 
 // Bring in the font
-@import url("https://fonts.googleapis.com/css?family=Rationale|Source+Code+Pro|Avenir:200,300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Rationale");
+@import url("https://fonts.googleapis.com/css?family=Avenir:200,300,400,600,700");
 @import url('../../../node_modules/highlight.js/styles/agate.css');
 
 // ====
@@ -94,7 +95,7 @@ h3, h4 {
 }
 
 .font-heading {
-	font-family: 'Rationale', 'Source Code Pro', sans-serif;
+	font-family: 'Rationale', 'Avenir', sans-serif;
 }
 
 .wrap {
