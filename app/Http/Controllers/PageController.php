@@ -88,11 +88,9 @@ class PageController extends Controller
             'slug' => 'required|alpha_dash|unique:pages,slug,' . $page->id,            
         ]);
 
-        $page->update($request->only(['title', 'slug', 'content', 'excerpt']));
+        $updated = $page->update($request->only(['title', 'slug', 'content', 'excerpt']));
 
-        session()->flash('status', 'updated');
-        
-        return redirect()->route('pages.edit', $page);
+        return response()->json($updated);
     }
 
     /**

@@ -23,8 +23,7 @@
 				<div class="flex justify-start">
 					<div class="text-sm pl-1 pt-1">/</div>
 					<div class="flex-1 ">
-						@include('forms.input', [
-							'name' => 'slug', 
+						@include('forms.input', [							'name' => 'slug', 
 							'value' => old('slug', $page->slug), 
 							'class' => 'slug'
 						])
@@ -33,9 +32,7 @@
 			</div>
 			<div class="text-right text-xs">
 				<publish-button page="{{ $page->slug }}" published="{{ !empty($page->published_at) }}"></publish-button>
-				<button type="submit" name="update" class="ml-2 py-1 pt-2 px-2 bg-blue rounded text-white hover:bg-blue-dark">
-					Update
-				</button>
+				<update-button></update-button>
 			</div>
 		</div>
 {{-- 		<div class="mb-4">

@@ -40,8 +40,9 @@ class PageTest extends TestCase
         $this->page['title'] = 'New Page';
         $this->page['excerpt'] = 'Something';
 
-        $response = $this->actingAs($user)->followingRedirects()
-            ->put(route('pages.update', $page), $this->page);
+        $response = $this->actingAs($user)
+            ->put(route('pages.update', $page), $this->page)
+            ->assertSuccessful();
 
         $this->assertDatabaseHas('pages', $this->page);
     }

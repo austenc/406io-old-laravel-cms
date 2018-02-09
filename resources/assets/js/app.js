@@ -15,23 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-$(function() {
-    $('#sidebar-toggle').click(function() {
-        $('#sidebar').removeClass('hidden');
-        $('#sidebar-toggle').addClass('hidden');
-        $('#sidebar-close').removeClass('hidden');
-    });
-
-    $('#sidebar-close').click(function() {
-        $('#sidebar').addClass('hidden');
-        $('#sidebar-toggle').removeClass('hidden');
-        $(this).addClass('hidden');
-    })
-});
-
 import VueToast from 'vue-toast'
 
 Vue.component('publish-button', require('./components/PublishButton.vue'));
+Vue.component('update-button', require('./components/UpdateButton.vue'));
 Vue.component('markdown-editor', require('./components/MarkdownEditor.vue'));
 
 const app = new Vue({
