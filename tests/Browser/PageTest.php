@@ -25,20 +25,18 @@ class PageTest extends DuskTestCase
             $browser->loginAs($user)->visit(route('pages.create'))
                 ->type('input[name="title"]', 'My Test Page')
                 ->type('slug', 'test-page')
-                ->type('excerpt', 'Something')
                 ->value('textarea[name=content]', 'Test Content')
                 ->click('button[type=submit][class*="btn"]')
                 ->assertSee('Page created')
                 ->assertInputValue('input[name=title]', 'My Test Page')
-                ->assertInputValue('slug', 'test-page')
-                ->assertInputValue('excerpt', 'Something');
+                ->assertInputValue('slug', 'test-page');
         });
     }
 
     public function testCanPublishAPage()
     {
         $user = factory(User::class)->create();
-        $page = factory(Page::class)->create();
+        $page = factory(Page::class)->create(['published_at' => null]);
         $this->browse(function (Browser $browser) use ($user, $page) {
             $browser->loginAs($user)->visit(route('pages.edit', $page))
                 ->click('button[name=publish]')
@@ -55,7 +53,7 @@ class PageTest extends DuskTestCase
     public function testCanUnpublishAPage()
     {
         $user = factory(User::class)->create();
-        $page = factory(Page::class)->create(['published_at' => new Carbon]);
+        $page = factory(Page::class)->create();
 
         $this->browse(function (Browser $browser) use ($user, $page) {
             $browser->loginAs($user)->visit(route('pages.edit', $page))
