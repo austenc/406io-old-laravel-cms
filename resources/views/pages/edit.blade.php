@@ -32,9 +32,6 @@
 				</div>
 			</div>
 			<div class="text-right text-xs">
-				<a class="text-sm hover:text-grey-lightest pl-4 text-grey" href="{{ url($page->slug) }}">
-					<i class="fa fa-search"></i>
-				</a>
 				<publish-button page="{{ $page->slug }}" published="{{ !empty($page->published_at) }}"></publish-button>
 				<button type="submit" name="update" class="ml-2 py-1 pt-2 px-2 bg-blue rounded text-white hover:bg-blue-dark">
 					Update

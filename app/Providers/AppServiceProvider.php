@@ -16,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::directive('active', function ($route) {
+            return "<?php echo request()->segment(1) == $route ? 'active' : ''?>";
+        });
     }
 
     /**

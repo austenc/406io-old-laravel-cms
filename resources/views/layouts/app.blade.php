@@ -18,32 +18,35 @@
 <body>
 @show
 
-    @section('nav')
+    @section('adminbar')
         @auth
-        <nav class="navbar-admin">
-            <div class="flex items-center flex-no-shrink text-white mr-6">            
-                <a href="{{ url('/') }}" class="font-semibold text-xl tracking-tight text-white">
-                    {{ config('app.name', '406.io') }}
-                </a>
-            </div>
-            <div class="block lg:hidden">
-                <button id="sidebar-toggle" class="px-3 py-2 pb-1  text-white hover:text-white">
-                    <i class="fa fa-fw fa-bars"></i>
-                </button>
-                <button id="sidebar-close" class="hidden px-2 py-2 pb-1 text-white hover:text-white">
-                    <i class="fa fa-fw fa-times"></i>
-                </button>              
-            </div>
-            <div id="sidebar" class="hidden z-50 w-2/3 sm:w-1/3 fixed pin-y pin-l flex-none bg-grey-light overflow-y-scroll lg:overflow-visible scrolling-touch lg:static lg:scrolling-auto lg:border-none shadow lg:shadow-none lg:bg-transparent lg:flex-grow lg:flex lg:w-auto lg:flex-row flex-col">
-                <div class="flex-1 overflow-y-scroll">
-                    <a href="{{ route('dashboard') }}" class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}">
-                        Dashboard
+            <div class="admin-bar">
+                <div>
+                    <a href="{{ url('/') }}" class="mr-6 text-grey-dark">
+                        <i class="fa fa-fw fa-home"></i>
+                        406.io
                     </a>
-                    <a href="{{ route('pages.index') }}" class="nav-item {{ request()->is('pages/*') || request()->is('pages') ? 'active' : '' }}">Manage Pages</a>
-                    </div>
-                <div class="lg:p-0">
-                    <a href="{{ route('logout') }}" 
-                        class="nav-item"
+                    <a href="{{ route('pages.index') }}" class="text-grey @active('pages')">
+                        <i class="fa fa-fw fa-newspaper"></i>
+                        Pages
+                    </a>
+                    @if (Route::currentRouteName() == 'pages.edit' && isset($page)) 
+                        <a href="{{ route('pages.display', $page) }}" class="text-grey">
+                            <i class="fa fa-fw fa-search"></i>
+                            View Page
+                        </a>                        
+                    @endif
+
+                    @if (Route::currentRouteName() == 'pages.display' && isset($page)) 
+                        <a href="{{ route('pages.edit', $page) }}" class="text-grey">
+                            <i class="fa fa-fw fa-edit"></i>
+                            Edit Page
+                        </a>                        
+                    @endif
+                </div>
+                <div class="text-right">
+                     <a href="{{ route('logout') }}" 
+                        class="text-grey"
                         onclick="event.preventDefault();
                         if (confirm('Are you sure?')) { document.getElementById('logout-form').submit(); }">
                         Logout
@@ -51,12 +54,13 @@
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
-                    </form>
-                </div>
+                    </form>                                   
+                </div>                
             </div>
-        </nav>
         @endauth
     @show
+    
+    @yield('nav')
 
     <div class="wrap">
         <div id="app">

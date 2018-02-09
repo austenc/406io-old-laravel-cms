@@ -68,6 +68,24 @@ a {
 	@apply .rounded .text-xs .mb-2 .px-1 .w-full .inline-block;
 	@extend .input-focus;
 }
+.admin-bar {
+	@apply .bg-black .text-white .flex .justify-between .text-sm;
+	position: sticky;
+	top: 0;
+
+	a {
+		@apply .inline-block .p-2;
+
+		&.active {
+			@apply .bg-grey-darkest .text-white;
+		}
+
+		&:hover {
+			background-color: darken(#364349, 3%);
+			@apply .text-grey-light;
+		}
+	}
+}
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -107,7 +125,7 @@ h3, h4 {
 }
 
 .page-bar {
-	@apply .flex .flex-row .items-center .px-2 .text-white .bg-grey-darker;
+	@apply .flex .flex-row .items-center .px-2 .text-white .bg-grey-darkest;
 }
 
 .admin-title-bar {
