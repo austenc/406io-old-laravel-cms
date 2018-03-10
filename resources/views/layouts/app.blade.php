@@ -64,7 +64,7 @@
 
     <div class="wrap">
         <div id="app">
-            <div class="admin-title-bar">
+            <div class="page-bar">
                 @section('title')
                 @show
             </div>

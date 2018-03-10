@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title')
 	<h1 class="flex-1 page-title">Create New Page</h1>
-	<a href="{{ route('pages.index') }}" class="flex-none text-blue text-right text-sm hover:underline">&laquo; Back to all</a>
+	<a href="{{ route('pages.index') }}" class="btn text-sm text-grey hover:text-white">&laquo; Back to all</a>
 @endsection
 @section('content')
 	<hr class="mb-8">
