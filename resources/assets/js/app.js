@@ -15,7 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import VueToast from 'vue-toast'
+import Snotify from 'vue-snotify'
+import 'vue-snotify/styles/material.scss'
+
+Vue.use(Snotify);
 
 Vue.component('publish-button', require('./components/PublishButton.vue'));
 Vue.component('update-button', require('./components/UpdateButton.vue'));
@@ -23,13 +26,6 @@ Vue.component('markdown-editor', require('./components/MarkdownEditor.vue'));
 
 const app = new Vue({
     el: '#app',
-    components: {VueToast},
-    mounted() {
-        window.Toast = this.$refs.toast;
-        Toast.setOptions({
-            position: 'right bottom',
-        });
-	}
 });
 
 hljs.initHighlightingOnLoad();

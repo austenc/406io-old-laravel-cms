@@ -71,7 +71,7 @@
             
             @yield('content')
         
-            <vue-toast ref="toast"></vue-toast>
+            <vue-snotify></vue-snotify>
         </div>
 
         @yield('comments')

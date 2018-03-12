@@ -12,12 +12,9 @@
 				var form = this.$refs.button.form;
 
 				// submit the form with axios with the data
-				axios.post(form.action, new FormData(form)).then(function(response) {
+				axios.post(form.action, new FormData(form)).then((response) => {
 					if (response.data == true) {
-						Toast.showToast('Saved.', {
-							theme: 'success', 
-							timeLife: 2500
-						});
+						this.$snotify.success('Saved.')
 					}
 				})
 			}
