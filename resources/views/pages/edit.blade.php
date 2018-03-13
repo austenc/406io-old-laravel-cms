@@ -6,9 +6,7 @@
 
 @section('content')
 	@if (session('status'))
-		<div class="p-3 my-4 rounded bg-green-light text-white">
-			Page {{ session('status') }} successfully.
-		</div>		
+		<flash>Created</flash>
 	@endif
 	<form method="POST" action="{{ route('pages.update', $page) }}" class="h-full">
 
@@ -23,7 +21,8 @@
 				<div class="flex justify-start">
 					<div class="text-sm pl-1 pt-1">/</div>
 					<div class="flex-1 ">
-						@include('forms.input', [							'name' => 'slug', 
+						@include('forms.input', [							
+							'name' => 'slug', 
 							'value' => old('slug', $page->slug), 
 							'class' => 'slug'
 						])

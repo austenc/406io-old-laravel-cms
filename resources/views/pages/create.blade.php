@@ -1,32 +1,37 @@
 @extends('layouts.app')
-@section('title')
-	<h1 class="flex-1 page-title">Create New Page</h1>
-	<a href="{{ route('pages.index') }}" class="btn text-sm text-grey hover:text-white">&laquo; Back to all</a>
-@endsection
 @section('content')
-	<hr class="mb-8">
 	<form method="POST" action="{{ route('pages.store') }}">
 		{{ csrf_field() }}
-		<div class="mb-4">
-			<label for="title" class="label">Title</label>
-			@include('forms.input', ['name' => 'title'])
-		</div>
-		<div class="mb-4">
-			<label for="slug" class="label">Slug</label>
-			@include('forms.input', ['name' => 'slug', 'placeholder' => '/your-great-url'])
-		</div>
-		<div class="mb-4">
-			<label for="excerpt" class="label">Excerpt</label>
-			@include('forms.input', ['name' => 'excerpt'])
-		</div>
-		<div class="mb-4">
-			@include('validation.errors', ['field' => 'content'])
-			<markdown-editor name="content" :content="'{{ old('content') }}'"></markdown-editor>
+
+		{{-- Page Bar --}}
+		<div class="page-bar">
+			<div class="flex-1 pt-2">
+				@include('forms.input', [
+					'name' => 'title', 
+					'value' => old('title', 'Your Page Title'),
+					'class' => 'input mb-1 input-focus py-1'
+				])
+				<div class="flex justify-start">
+					<div class="text-sm pl-1 pt-1">/</div>
+					<div class="flex-1">
+						@include('forms.input', [
+							'name' => 'slug', 
+							'value' => old('slug', 'your-page-title'), 
+							'class' => 'slug'
+						])
+					</div>
+				</div>
+			</div>
+			<div class="text-right text-xs">
+				<button type="submit"
+					class="ml-2 py-1 pt-2 px-2 bg-blue rounded text-white hover:bg-blue-dark">
+					Create
+				</button>
+			</div>
 		</div>
 
-
-		<button type="submit" class="btn bg-blue hover:bg-blue-darker">
-			Save New Page
-		</button>
+		<div class="bg-white h-full flex flex-col flex-grow">	
+			<markdown-editor name="content" content="{{ old('content', 'Your page content') }}"></markdown-editor>
+		</div>
 	</form>
 @endsection

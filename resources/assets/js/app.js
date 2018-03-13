@@ -20,6 +20,7 @@ import 'vue-snotify/styles/material.scss'
 
 Vue.use(Snotify);
 
+Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('publish-button', require('./components/PublishButton.vue'));
 Vue.component('update-button', require('./components/UpdateButton.vue'));
 Vue.component('markdown-editor', require('./components/MarkdownEditor.vue'));
