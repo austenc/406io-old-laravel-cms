@@ -41,12 +41,13 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $attributes = $request->validate([
             'title' => 'required|min:4|unique:pages',
-            'slug' => 'required|alpha_dash|unique:pages',            
+            'slug' => 'required|alpha_dash|unique:pages',        
         ]);
 
-        $page = Page::create($request->only(['title', 'slug', 'content', 'excerpt']));
+        $page = Page::create($request->only(['title', 'slug', 'content', 'excerpt', 'tags']));
+        $page->syncTags(explode(',', request('tags')));
 
         session()->flash('status', 'created');
         return redirect()->route('pages.edit', $page);
@@ -88,7 +89,8 @@ class PageController extends Controller
             'slug' => 'required|alpha_dash|unique:pages,slug,' . $page->id,            
         ]);
 
-        $updated = $page->update($request->only(['title', 'slug', 'content', 'excerpt']));
+        $updated = $page->syncTags(explode(',', request('tags')))
+            ->update($request->only(['title', 'slug', 'content', 'excerpt']));
 
         return response()->json($updated);
     }

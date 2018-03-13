@@ -5,17 +5,20 @@
 
 	thead > tr > th {
 		@apply .font-bold .p-3 .pt-4 .text-grey-dark .bg-grey-light .uppercase .text-sm; 
-
-		&:first-child {
-			@apply .rounded-tl;
-		}
-		&:last-child {
-			@apply .rounded-tr;
-		}
 	}
 
 	tbody > tr > td {
 		@apply .py-3 .px-2 .border-b;
+	}
+
+	thead > tr > th,
+	tbody > tr > td {
+		&:first-child {
+			@apply .pl-8;
+		}
+		&:last-child {
+			@apply .pr-8;
+		}
 	}
 
 	tbody > tr:hover {

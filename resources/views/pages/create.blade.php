@@ -22,6 +22,9 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<tags></tags>
+			</div>
 			<div class="text-right text-xs">
 				<button type="submit"
 					class="ml-2 py-1 pt-2 px-2 bg-blue rounded text-white hover:bg-blue-dark">

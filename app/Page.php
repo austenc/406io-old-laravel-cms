@@ -2,11 +2,14 @@
 
 namespace App;
 
+use Spatie\Tags\HasTags;
 use Illuminate\Database\Eloquent\Model;
 use Parsedown;
 
 class Page extends Model
 {
+    use HasTags;
+
     protected $fillable = [
     	'title',
     	'slug',

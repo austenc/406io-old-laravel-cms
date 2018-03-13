@@ -29,6 +29,9 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<tags :for="{{ json_encode($page->tags->pluck('name')->toArray()) }}"></tags>
+			</div>
 			<div class="text-right text-xs">
 				<publish-button page="{{ $page->slug }}" published="{{ !empty($page->published_at) }}"></publish-button>
 				<update-button></update-button>
