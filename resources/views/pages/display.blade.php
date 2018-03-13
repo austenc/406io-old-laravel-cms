@@ -5,7 +5,14 @@
 	<div class="text-center text-grey-dark text-sm">
 		Posted {{ $page->created_at->format('M dS, Y') }}
 	</div>
-	<a href="{{ url('/') }}" class="block text-center text-sm my-4">
+	<div class="text-center py-4 mt-4">
+		@foreach($page->tags as $tag)
+			<span class="bg-blue p-1 px-2 pt-2 mx-1 rounded text-white">
+				{{ $tag->name }}
+			</span>
+		@endforeach
+	</div>
+	<a href="{{ url('/') }}" class="block text-center text-sm my-4 mb-8">
 		&laquo; Back to All Posts
 	</a>
 	<div class="container mx-auto text-lg text-grey-darker leading-normal w-3/4 md:w-2/3 mx-auto">
