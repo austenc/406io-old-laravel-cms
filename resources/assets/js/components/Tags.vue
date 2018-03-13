@@ -21,14 +21,15 @@
             FontAwesomeIcon
         },
         props: {
-            for: {
-                default: null
+            list: {
+                type: Array,
+                default: () => []
             }
         },
         data() {
             return {
                 tag: '',
-                tags: [],
+                tags: this.list,
                 showInput: false             
             }
         },
@@ -56,10 +57,6 @@
                     this.$refs.input.focus();
                 }
             }
-        },
-
-        mounted() {
-            this.tags = this.for
         }
     }    
 </script>

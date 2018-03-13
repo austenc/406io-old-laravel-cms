@@ -30,7 +30,8 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('pages.create');
+        $oldTags = empty(old('tags')) ? [] : explode(',', old('tags'));
+        return view('pages.create')->withOldTags(json_encode($oldTags));
     }
 
     /**
@@ -46,7 +47,7 @@ class PageController extends Controller
             'slug' => 'required|alpha_dash|unique:pages',        
         ]);
 
-        $page = Page::create($request->only(['title', 'slug', 'content', 'excerpt', 'tags']));
+        $page = Page::create($request->only(['title', 'slug', 'content', 'excerpt']));
         $page->syncTags(explode(',', request('tags')));
 
         session()->flash('status', 'created');

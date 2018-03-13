@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<div>
-				<tags></tags>
+				<tags :list="{{ $oldTags }}"></tags>
 			</div>
 			<div class="text-right text-xs">
 				<button type="submit"
