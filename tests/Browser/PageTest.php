@@ -26,8 +26,9 @@ class PageTest extends DuskTestCase
                 ->type('input[name="title"]', 'My Test Page')
                 ->type('slug', 'test-page')
                 ->value('textarea[name=content]', 'Test Content')
-                ->click('button[type=submit][class*="btn"]')
-                ->assertSee('Page created')
+                ->press('Create')
+                ->waitFor('.snotifyToast', 1)
+                ->assertSee('Created')
                 ->assertInputValue('input[name=title]', 'My Test Page')
                 ->assertInputValue('slug', 'test-page');
         });
@@ -40,7 +41,7 @@ class PageTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user, $page) {
             $browser->loginAs($user)->visit(route('pages.edit', $page))
                 ->click('button[name=publish]')
-                ->waitFor('.vue-toast_message', 1)
+                ->waitFor('.snotifyToast', 1)
                 ->assertSee('Page published');
 
                 $this->assertDatabaseMissing('pages', [
@@ -58,7 +59,7 @@ class PageTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user, $page) {
             $browser->loginAs($user)->visit(route('pages.edit', $page))
                 ->click('button[name=unpublish]')
-                ->waitFor('.vue-toast_message', 1)
+                ->waitFor('.snotifyToast', 1)
                 ->assertSee('Page unpublished');
 
                 $this->assertDatabaseHas('pages', [
