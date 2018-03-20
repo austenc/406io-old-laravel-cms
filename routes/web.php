@@ -25,3 +25,5 @@ Route::post('pages/{page}/unpublish', 'PageController@unpublish')
 Route::get('/{page}', 'PageController@display')
 	->name('pages.display')
 	->middleware('publishedOnly');
+
+Route::get('/tags/{tag}', 'BrowseTagController')->name('tags.browse');

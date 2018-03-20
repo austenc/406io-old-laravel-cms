@@ -7,9 +7,9 @@
 	</div>
 	<div class="text-center py-4 mt-4">
 		@foreach($page->tags as $tag)
-			<span class="bg-blue p-1 mx-1 rounded text-white">
+			<a href="{{ route('tags.browse', $tag->slug) }}" class="bg-blue hover:bg-blue-darker p-1 mx-1 rounded text-white">
 				{{ $tag->name }}
-			</span>
+			</a>
 		@endforeach
 	</div>
 	<a href="{{ url('/') }}" class="block text-center text-sm my-4 mb-8">
